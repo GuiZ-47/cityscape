@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class AddListingController extends AbstractController
 {
-    #[Route('/add-listing', name: 'app_add_listing')]
+    #[Route('/add/listing', name: 'app_add_listing')]
     public function index(): Response
     {
         return $this->render('add_listing/index.html.twig', [
