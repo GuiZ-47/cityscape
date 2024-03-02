@@ -23,9 +23,8 @@ class CategoryFixture extends Fixture
         //         'slug'=> '',
         //         'description'=> '',
         //         'parent'=> [
-        //             'fff'=>'',
         //         ],
-        //         ],
+        //        [] ,
         // ];
 
         // $product = new Product();
@@ -35,8 +34,3 @@ class CategoryFixture extends Fixture
     }
 }
 
-$category =[
-    [Home =>],
-    [Vente =>],
-];
-    
