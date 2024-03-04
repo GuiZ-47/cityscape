@@ -1,7 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AboutController!
-{% endblock %}
+{% block title %}About{% endblock %}
+
+{% block style_main_bg_color %}
+    <style>
+        .body-bg {
+            background-color: #ffffff !important ; 
+        }
+    </style>
+{% endblock style_main_bg_color %}
 
 {% block body %}
 	{% include '_partials/_breadcrumb.html.twig' %}

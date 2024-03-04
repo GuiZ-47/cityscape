@@ -1,0 +1,236 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BlogDetails{% endblock %}
+
+{% block style_main_bg_color %}
+    <style>
+        .body-bg {
+            background-color: #ffffff !important ; 
+        }
+    </style>
+{% endblock style_main_bg_color %}
+
+{% block body %}
+    {% include '_partials/_breadcrumb.html.twig' %}
+
+    
+<!-- ========================= Blog Details Section Start ======================== -->
+<div class="blog-details-section padding-y-120">
+    <div class="container container-two">
+        <div class="row gy-4">
+            <div class="col-lg-8">
+                <div class="blog-details">
+                    <div class="blog-details__thumb">
+                        <img src="{{ asset('assets/images/thumbs/blog-details.png') }}" alt="">
+                        <span class="blog-details__date">03 February 2024</span>
+                    </div>
+                    <div class="blog-details__content">
+                        <ul class="blog-infos">
+                            <li class="blog-infos__item">
+                                By Stanio lainto
+                            </li>
+                            <li class="blog-infos__item">
+                                <a href="#" class="blog-infos__link"> 
+                                    <span class="icon"><i class="fas fa-comment-alt"></i> </span>
+                                    Web Design
+                                </a>
+                            </li>
+                            <li class="blog-infos__item">
+                                <a href="#" class="blog-infos__link"> 
+                                    <span class="icon"> <i class="fas fa-comments"></i></span>
+                                    Comments (05)
+                                </a>
+                            </li>
+                        </ul>
+                        <h5 class="blog-details__title">Elevate your brand with a the stunning portfolio</h5>
+                        <p class="blog-details__desc">Real estate is a lucrative industry that involves the buying, selling, and renting properties. It encompasses residential, commercial, and industrial properties</p>
+                        <p class="blog-details__desc">Real estate is a lucrative industry that involves the buying selling and renting properties It encompasses residential commercial and industrial properties. Real estate agents play a crucial role in facilitating transactions and helping </p>
+                    </div>
+
+                    <!-- Blog Testi Start -->
+                    <div class="blog-testi">
+                        <div class="blog-testi__thumb">
+                            <img src="{{ asset('assets/images/thumbs/blog-testi.png') }}" alt="">
+                        </div>
+                        <p class="blog-testi__desc">Real estate is a lucrative industry that involves the buying selling and renting properties It encompasses residential commercial and industrial properties. Real estate agents play a crucial role in facilitating at transactions and helping commercial, and industrial </p>
+                        <div class="blog-testi__bottom flx-between">
+                            <span class="blog-testi__name text-gradient">Mark wood</span>
+                            <img src="{{ asset('assets/images/icons/quote-two.svg') }}" alt="" class="blog-testi__quote">
+                        </div>
+                    </div>
+                    <!-- Blog Testi End -->
+                    
+                    <!-- Blog ShowCase Start -->
+                    <div class="blog-showcase">
+                        <h5 class="blog-showcase__title">Showcase your talent with our portfolio</h5>
+                        <p class="blog-showcase__desc">Aliquam eros justo, posuere loborti viverra laoreet matti ullamcorper posuere viverra .Aliquam eros justo, posuere lobortis, viverra laoreet augue mattis fermentum ullamcorper viverra laoreet Aliquam eros </p>
+                        <div class="blog-showcase__content flx-align gap-4">
+                            <div class="blog-showcase__thumb">
+                                <img src="{{ asset('assets/images/thumbs/blog-showcase.png') }}" alt="">
+                            </div>
+                            <ul class="check-list">
+                                <li class="check-list__item d-flex align-items-center">
+                                    <span class="icon"><i class="fas fa-check"></i></span>
+                                    <span class="text">Your trusted real estate partner</span>
+                                </li>
+                                <li class="check-list__item d-flex align-items-center">
+                                    <span class="icon"><i class="fas fa-check"></i></span>
+                                    <span class="text">Unlocking the door to your new home</span>
+                                </li>
+                                <li class="check-list__item d-flex align-items-center">
+                                    <span class="icon"><i class="fas fa-check"></i></span>
+                                    <span class="text">Luxury living at affordable prices</span>
+                                </li>
+                                <li class="check-list__item d-flex align-items-center">
+                                    <span class="icon"><i class="fas fa-check"></i></span>
+                                    <span class="text">Your journey to homeownership starts here</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <p class="blog-showcase__desc">Real estate is a lucrative industry that involves the buying selling and renting properties It encompass residential commercial and industrial properties. Real estate agents play a crucial role in facilitating at transactions and an english helping commercial, and industrial</p>
+                    </div>
+                    <!-- Blog ShowCase End -->
+
+                    <!-- Blog Next Prev Start -->
+                    <div class="blog-nextPrev flx-between gap-3">
+                        <div class="blog-nextPrev__item flx-align">
+                            <button type="button" class="blog-nextPrev__button"> <i class="fas fa-arrow-left"></i> </button>
+                            <div class="blog-nextPrev__content">
+                                <span class="blog-nextPrev__text">Previous post</span>
+                                <h6 class="blog-nextPrev__title mb-0">Insure your peace of mind</h6>
+                            </div> 
+                        </div>
+                        <div class="blog-nextPrev__item flx-align flex-row-reverse ms-auto">
+                            <button type="button" class="blog-nextPrev__button"> <i class="fas fa-arrow-right"></i> </button>
+                            <div class="blog-nextPrev__content text-end">
+                                <span class="blog-nextPrev__text">Previous post</span>
+                                <h6 class="blog-nextPrev__title mb-0">Insure your peace of mind</h6>
+                            </div> 
+                        </div>
+                    </div>
+                    <!-- Blog Next Prev End -->
+
+                    <!-- Blog Keyword Start -->
+                    <div class="blog-keyword flx-between gap-2">
+                        <div class="blog-keyword__content">
+                            <span class="blog-keyword__text t text-heading fw-bold">Keyword: </span>
+                            <a href="#" class="blog-keyword__link">Interiour</a>
+                            <a href="#" class="blog-keyword__link">Ux design</a>
+                            <a href="#" class="blog-keyword__link">Graphics</a>
+                        </div>
+                        <ul class="social-list style-two mt-0">
+                            <li class="social-list__item">
+                                <a href="https://www.facebook.com" class="social-list__link flx-center text-facebook"><i class="fab fa-facebook"></i>
+                                </a>
+                             </li>
+                            <li class="social-list__item">
+                                <a href="https://www.pinterest.com" class="social-list__link flx-center text-pinterest"><i class="fab fa-pinterest"></i>
+                                </a>
+                            </li>
+                            <li class="social-list__item">
+                                <a href="https://www.linkedin.com" class="social-list__link flx-center text-linkedin"> <i class="fab fa-linkedin"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Blog Keyword End -->
+
+                    <!-- Comment Start -->
+                    <div class="col-lg-12 pt-5">
+                        <h5 class="comment-title mb-4 mb-lg-5">2 Comment</h5>
+                        <ul class="comment-list">
+                            <li class="comment-list__item d-flex">
+                                <div class="comment-list__thumb">
+                                    <img src="{{ asset('assets/images/thumbs/comment1.png') }}" class="cover-img" alt="">
+                                </div>
+                                <div class="comment-list__content">
+                                    <div class="flx-align gap-2 gap-sm-4">
+                                        <h6 class="comment-list__name font-16">Stanio lainto</h6>
+                                        <span class="comment-list__date">December 16, 2023</span>
+                                        <ul class="social-list mt-0 p-0 border-0 gap-3">
+                                            <li class="social-list__item">
+                                                <a href="https://www.facebook.com" class="social-list__link text-gradient font-12 flx-center"><i class="fab fa-facebook-f"></i>
+                                                </a>
+                                             </li>
+                                            <li class="social-list__item">
+                                                <a href="https://www.twitter.com" class="social-list__link text-gradient font-12 flx-center"> <i class="fab fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li class="social-list__item">
+                                                <a href="https://www.pinterest.com" class="social-list__link text-gradient font-12 flx-center"> <i class="fab fa-instagram"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p class="comment-list__desc">Ished fact that a reader will be distrol acted bioii the.ished fact that a reader will be distrol acted laoreet Aliquam fact that a reader will be distrol acted Aliquam eros justo.</p>
+                                    <a class="comment-list__reply" href="#comment-box"> Reply </a>
+                                </div>
+                            </li>
+                            <li class="comment-list__item d-flex">
+                                <div class="comment-list__thumb">
+                                    <img src="{{ asset('assets/images/thumbs/comment2.png') }}" class="cover-img" alt="">
+                                </div>
+                                <div class="comment-list__content">
+                                    <div class="flx-align gap-2 gap-sm-4">
+                                        <h6 class="comment-list__name font-16">Court Henry</h6>
+                                        <span class="comment-list__date">December 16, 2023</span>
+                                        <ul class="social-list mt-0 p-0 border-0 gap-3">
+                                            <li class="social-list__item">
+                                                <a href="https://www.facebook.com" class="social-list__link text-gradient font-12 flx-center"><i class="fab fa-facebook-f"></i>
+                                                </a>
+                                             </li>
+                                            <li class="social-list__item">
+                                                <a href="https://www.twitter.com" class="social-list__link text-gradient font-12 flx-center"> <i class="fab fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li class="social-list__item">
+                                                <a href="https://www.pinterest.com" class="social-list__link text-gradient font-12 flx-center"> <i class="fab fa-instagram"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p class="comment-list__desc">Ished fact that a reader will be distrol acted bioii the.ished fact that a reader will be distrol acted laoreet Aliquam fact that a reader will be distrol acted Aliquam eros justo.</p>
+                                    <a class="comment-list__reply" href="#comment-box"> Reply </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Comment End -->
+
+                    <!-- Form Start -->
+                    <div class="comment-form" id="comment-box">
+                        <h5 class="comment-form__title"> Leave a Comment </h5>
+                        <p class="comment-form__desc"> By using form u agree with the message sorage, you can contact us directly now By using form agree with the message sorage, you can contact us directly now </p>
+                        <form action="#" autocomplete="off">
+                            <div class="row gy-4">
+                                <div class="col-sm-6">
+                                    <input type="text" class="common-input common-input--grayBg" placeholder="User Name">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="email" class="common-input common-input--grayBg" placeholder="Email Address">
+                                </div>
+                                <div class="col-sm-12">
+                                    <textarea class="common-input common-input--grayBg" placeholder="Your Message"></textarea>
+                                </div>
+                                <div class="col-sm-12">
+                                    <button class="btn btn-main w-100"> Send Message </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Form End -->
+                    
+                </div>
+            </div>
+            <div class="col-lg-4">
+
+                {% include '_partials/_blog_sidebar.html.twig' %}
+
+            </div>  
+        </div>
+    </div>
+</div>
+<!-- ========================= Blog Details Section End ======================== -->
+
+    {% include '_partials/_cta.html.twig' %}
+{% endblock %}

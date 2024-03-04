@@ -35,12 +35,15 @@
 		rel="stylesheet" href="{{ asset('assets/css/jquery-ui.css') }}">
 		<!-- Main css -->
 		<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+		
+		{% block style_main_bg_color %}{% endblock %}
 
 		{# Pas utile pour l'instant ? #}
+		
 			{# {% block stylesheets %}
-			{% endblock %}
-								
-			{% block javascripts %}
+			{% endblock %} #}
+
+			{# {% block javascripts %}
 				{% block importmap %}{{ importmap('app') }}{% endblock %}
 			{% endblock %} #}
 	</head>
