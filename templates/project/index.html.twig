@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Project{% endblock %}
+
+{% block style_main_bg_color %}
+    <style>
+        .body-bg {
+            background-color: #ffffff !important ; 
+        }
+    </style>
+{% endblock style_main_bg_color %}
+
+{% block body %}
+	{% include '_partials/_breadcrumb.html.twig' %}
+
+	<!-- ======================= Project Section Start =========================== -->
+	<section class="project-page padding-y-120">
+		<div class="container container-two">
+			<div class="row gy-4">
+				<div class="col-md-4 col-sm-6 col-xs-6">
+					<div class="project-page-thumb">
+						<img src="{{ asset('assets/images/thumbs/project-img1.png') }}" alt="" class="cover-img">
+						<div class="project-page-content">
+							<h6 class="project-page-content__title">
+								<a href="project-details.html" class="link">Where Innovation Meets Interior Design</a>
+							</h6>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-6">
+					<div class="row gy-4">
+						<div class="col-12">
+							<div class="project-page-thumb">
+								<img src="{{ asset('assets/images/thumbs/project-img2.png') }}" alt="" class="cover-img">
+								<div class="project-page-content">
+									<h6 class="project-page-content__title">
+										<a href="project-details.html" class="link">Where Innovation Meets Interior Design</a>
+									</h6>
+								</div>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="project-page-thumb">
+								<img src="{{ asset('assets/images/thumbs/project-img3.png') }}" alt="" class="cover-img">
+								<div class="project-page-content">
+									<h6 class="project-page-content__title">
+										<a href="project-details.html" class="link">Where Innovation Meets Interior Design</a>
+									</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-6">
+					<div class="project-page-thumb">
+						<img src="{{ asset('assets/images/thumbs/project-img4.png') }}" alt="" class="cover-img">
+						<div class="project-page-content">
+							<h6 class="project-page-content__title">
+								<a href="project-details.html" class="link">Where Innovation Meets Interior Design</a>
+							</h6>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-6">
+					<div class="row gy-4">
+						<div class="col-12">
+							<div class="project-page-thumb">
+								<img src="{{ asset('assets/images/thumbs/project-img5.png') }}" alt="" class="cover-img">
+								<div class="project-page-content">
+									<h6 class="project-page-content__title">
+										<a href="project-details.html" class="link">Where Innovation Meets Interior Design</a>
+									</h6>
+								</div>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="project-page-thumb">
+								<img src="{{ asset('assets/images/thumbs/project-img6.png') }}" alt="" class="cover-img">
+								<div class="project-page-content">
+									<h6 class="project-page-content__title">
+										<a href="project-details.html" class="link">Where Innovation Meets Interior Design</a>
+									</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-6">
+					<div class="project-page-thumb">
+						<img src="{{ asset('assets/images/thumbs/project-img1.png') }}" alt="" class="cover-img">
+						<div class="project-page-content">
+							<h6 class="project-page-content__title">
+								<a href="project-details.html" class="link">Where Innovation Meets Interior Design</a>
+							</h6>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-6">
+					<div class="row gy-4">
+						<div class="col-12">
+							<div class="project-page-thumb">
+								<img src="{{ asset('assets/images/thumbs/project-img2.png') }}" alt="" class="cover-img">
+								<div class="project-page-content">
+									<h6 class="project-page-content__title">
+										<a href="project-details.html" class="link">Where Innovation Meets Interior Design</a>
+									</h6>
+								</div>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="project-page-thumb">
+								<img src="{{ asset('assets/images/thumbs/project-img3.png') }}" alt="" class="cover-img">
+								<div class="project-page-content">
+									<h6 class="project-page-content__title">
+										<a href="project-details.html" class="link">Where Innovation Meets Interior Design</a>
+									</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- ======================= Project Section End =========================== -->
+
+	{% include '_partials/_cta.html.twig' %}
+{% endblock %}

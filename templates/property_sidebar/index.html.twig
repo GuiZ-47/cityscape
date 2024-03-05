@@ -1,0 +1,821 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Property With Sidebar
+{% endblock %}
+
+{% block body %}
+	{% include '_partials/_breadcrumb.html.twig' %}
+
+	<!-- ======================== Property Section Start ============================ -->
+	<section class="property bg-gray-100 padding-y-120">
+		<div class="container container-two">
+			<div class="property-filter">
+				<form action="#">
+					<div class="row gy-4">
+						<div class="col-lg-2 col-md-3 col-sm-6 col-xs-6">
+							<div class="select-has-icon">
+								<select class="form-select common-input common-input--withLeftIcon pill text-gray-800">
+									<option value="Status" disabled selected>Status</option>
+									<option value="All">All</option>
+									<option value="Buy">Buy</option>
+									<option value="Rent">Rent</option>
+								</select>
+								<span class="input-icon input-icon--left text-gradient">
+									<img src="{{ asset('assets/images/icons/status.svg') }}" alt="">
+								</span>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+							<div class="select-has-icon">
+								<select class="form-select common-input common-input--withLeftIcon pill text-gray-800">
+									<option value="Type" disabled selected>Type</option>
+									<option value="All">All</option>
+									<option value="Houses">Houses</option>
+									<option value="Apartments">Apartments</option>
+									<option value="Office">Office</option>
+									<option value="Villa">Villa</option>
+								</select>
+								<span class="input-icon input-icon--left text-gradient">
+									<img src="{{ asset('assets/images/icons/type.svg') }}" alt="">
+								</span>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-3 col-sm-6 col-xs-6">
+							<div class="select-has-icon">
+								<select class="form-select common-input common-input--withLeftIcon pill text-gray-800">
+									<option value="Location" disabled selected>Location</option>
+									<option value="1">Bangladesh</option>
+									<option value="1">Japan</option>
+									<option value="1">Korea</option>
+									<option value="1">Singapore</option>
+									<option value="1">Germany</option>
+									<option value="1">Thailand</option>
+								</select>
+								<span class="input-icon input-icon--left text-gradient">
+									<img src="{{ asset('assets/images/icons/location.svg') }}" alt="">
+								</span>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+							<div class="position-relative">
+								<input type="text" class="common-input common-input--withLeftIcon pill text-gray-800" placeholder="Advanced Filter">
+								<span class="input-icon input-icon--left text-gradient">
+									<img src="{{ asset('assets/images/icons/filter.svg') }}" alt="">
+								</span>
+							</div>
+						</div>
+					</div>
+				</form>
+				<div class="property-filter__bottom flx-between gap-2">
+					<span class="property-filter__text font-18 text-gray-800">Showing 1-10 of 23</span>
+					<div class="d-flex align-items-center gap-2">
+						<div class="list-grid d-flex align-items-center gap-2 me-4">
+							<button class="list-grid__button grid-button active text-body">
+								<i class="las la-border-all"></i>
+							</button>
+							<button class="list-grid__button list-button text-body">
+								<i class="las la-list"></i>
+							</button>
+						</div>
+						<div class="d-flex align-items-center gap-2">
+							<span class="property-filter__text font-18 text-gray-800">
+								Sort by:
+							</span>
+							<div class="select-has-icon">
+								<select class="form-select common-input pill text-gray-800 px-3 py-2">
+									<option value="Newest">Newest</option>
+									<option value="Best Seller">Best Seller</option>
+									<option value="Best Match">Best Match</option>
+									<option value="Low Price">Low Price</option>
+									<option value="High Price">High Price</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row gy-4">
+				<div class="col-lg-8">
+					<div class="list-grid-item-wrapper row gy-4">
+						<div class="col-sm-6">
+							<div class="property-item style-two">
+								<div class="property-item__thumb">
+									<a href="property-details.html" class="link">
+										<img src="{{ asset('assets/images/thumbs/property-7.png') }}" alt="" class="cover-img">
+									</a>
+								</div>
+								<div class="property-item__content">
+									<h6 class="property-item__title">
+										<a href="property-details.html" class="link">
+											Turning Dreams into Addresses Home State
+										</a>
+									</h6>
+									<ul class="amenities-list flx-align">
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bed"></i>
+											</span>
+											<span class="text">3 Beds</span>
+										</li>
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bath"></i>
+											</span>
+											<span class="text">3 Baths</span>
+										</li>
+									</ul>
+									<h6 class="property-item__price">
+										$456.00
+										<span class="day">/per day</span>
+									</h6>
+									<p class="property-item__location d-flex gap-2">
+										<span class="icon text-gradient">
+											<i class="fas fa-map-marker-alt"></i>
+										</span>
+										66 Broklyant, New York America
+									</p>
+									<a href="property-details.html" class="simple-btn text-gradient fw-semibold font-14">Book Now
+										<span class="icon-right">
+											<i class="fas fa-arrow-right"></i>
+										</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="property-item style-two">
+								<div class="property-item__thumb">
+									<a href="property-details.html" class="link">
+										<img src="{{ asset('assets/images/thumbs/property-8.png') }}" alt="" class="cover-img">
+									</a>
+								</div>
+								<div class="property-item__content">
+									<h6 class="property-item__title">
+										<a href="property-details.html" class="link">
+											Your journey homeownership starts here  too
+										</a>
+									</h6>
+									<ul class="amenities-list flx-align">
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bed"></i>
+											</span>
+											<span class="text">3 Beds</span>
+										</li>
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bath"></i>
+											</span>
+											<span class="text">3 Baths</span>
+										</li>
+									</ul>
+									<h6 class="property-item__price">
+										$300.00
+										<span class="day">/per day</span>
+									</h6>
+									<p class="property-item__location d-flex gap-2">
+										<span class="icon text-gradient">
+											<i class="fas fa-map-marker-alt"></i>
+										</span>
+										66 Broklyant, New York America
+									</p>
+									<a href="property-details.html" class="simple-btn text-gradient fw-semibold font-14">Book Now
+										<span class="icon-right">
+											<i class="fas fa-arrow-right"></i>
+										</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="property-item style-two">
+								<div class="property-item__thumb">
+									<a href="property-details.html" class="link">
+										<img src="{{ asset('assets/images/thumbs/property-9.png') }}" alt="" class="cover-img">
+									</a>
+								</div>
+								<div class="property-item__content">
+									<h6 class="property-item__title">
+										<a href="property-details.html" class="link">
+											Brick by Brick Your Dream Home Awaits
+										</a>
+									</h6>
+									<ul class="amenities-list flx-align">
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bed"></i>
+											</span>
+											<span class="text">3 Beds</span>
+										</li>
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bath"></i>
+											</span>
+											<span class="text">3 Baths</span>
+										</li>
+									</ul>
+									<h6 class="property-item__price">
+										$380.00
+										<span class="day">/per day</span>
+									</h6>
+									<p class="property-item__location d-flex gap-2">
+										<span class="icon text-gradient">
+											<i class="fas fa-map-marker-alt"></i>
+										</span>
+										66 Broklyant, New York America
+									</p>
+									<a href="property-details.html" class="simple-btn text-gradient fw-semibold font-14">Book Now
+										<span class="icon-right">
+											<i class="fas fa-arrow-right"></i>
+										</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="property-item style-two">
+								<div class="property-item__thumb">
+									<a href="property-details.html" class="link">
+										<img src="{{ asset('assets/images/thumbs/property-10.png') }}" alt="" class="cover-img">
+									</a>
+								</div>
+								<div class="property-item__content">
+									<h6 class="property-item__title">
+										<a href="property-details.html" class="link">
+											Opening Doors to Your Dreams For Living
+										</a>
+									</h6>
+									<ul class="amenities-list flx-align">
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bed"></i>
+											</span>
+											<span class="text">3 Beds</span>
+										</li>
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bath"></i>
+											</span>
+											<span class="text">3 Baths</span>
+										</li>
+									</ul>
+									<h6 class="property-item__price">
+										$190.00
+										<span class="day">/per day</span>
+									</h6>
+									<p class="property-item__location d-flex gap-2">
+										<span class="icon text-gradient">
+											<i class="fas fa-map-marker-alt"></i>
+										</span>
+										66 Broklyant, New York America
+									</p>
+									<a href="property-details.html" class="simple-btn text-gradient fw-semibold font-14">Book Now
+										<span class="icon-right">
+											<i class="fas fa-arrow-right"></i>
+										</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="property-item style-two">
+								<div class="property-item__thumb">
+									<a href="property-details.html" class="link">
+										<img src="{{ asset('assets/images/thumbs/property-11.png') }}" alt="" class="cover-img">
+									</a>
+								</div>
+								<div class="property-item__content">
+									<h6 class="property-item__title">
+										<a href="property-details.html" class="link">
+											Home is Where Your Story Begins
+										</a>
+									</h6>
+									<ul class="amenities-list flx-align">
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bed"></i>
+											</span>
+											<span class="text">3 Beds</span>
+										</li>
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bath"></i>
+											</span>
+											<span class="text">3 Baths</span>
+										</li>
+									</ul>
+									<h6 class="property-item__price">
+										$480.00
+										<span class="day">/per day</span>
+									</h6>
+									<p class="property-item__location d-flex gap-2">
+										<span class="icon text-gradient">
+											<i class="fas fa-map-marker-alt"></i>
+										</span>
+										66 Broklyant, New York America
+									</p>
+									<a href="property-details.html" class="simple-btn text-gradient fw-semibold font-14">Book Now
+										<span class="icon-right">
+											<i class="fas fa-arrow-right"></i>
+										</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="property-item style-two">
+								<div class="property-item__thumb">
+									<a href="property-details.html" class="link">
+										<img src="{{ asset('assets/images/thumbs/property-12.png') }}" alt="" class="cover-img">
+									</a>
+								</div>
+								<div class="property-item__content">
+									<h6 class="property-item__title">
+										<a href="property-details.html" class="link">
+											Building Trust, One Home at a Time
+										</a>
+									</h6>
+									<ul class="amenities-list flx-align">
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bed"></i>
+											</span>
+											<span class="text">3 Beds</span>
+										</li>
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bath"></i>
+											</span>
+											<span class="text">3 Baths</span>
+										</li>
+									</ul>
+									<h6 class="property-item__price">
+										$520.00
+										<span class="day">/per day</span>
+									</h6>
+									<p class="property-item__location d-flex gap-2">
+										<span class="icon text-gradient">
+											<i class="fas fa-map-marker-alt"></i>
+										</span>
+										66 Broklyant, New York America
+									</p>
+									<a href="property-details.html" class="simple-btn text-gradient fw-semibold font-14">Book Now
+										<span class="icon-right">
+											<i class="fas fa-arrow-right"></i>
+										</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="property-item style-two">
+								<div class="property-item__thumb">
+									<a href="property-details.html" class="link">
+										<img src="{{ asset('assets/images/thumbs/property-13.png') }}" alt="" class="cover-img">
+									</a>
+								</div>
+								<div class="property-item__content">
+									<h6 class="property-item__title">
+										<a href="property-details.html" class="link">
+											Guiding You Home with Experience
+										</a>
+									</h6>
+									<ul class="amenities-list flx-align">
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bed"></i>
+											</span>
+											<span class="text">3 Beds</span>
+										</li>
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bath"></i>
+											</span>
+											<span class="text">3 Baths</span>
+										</li>
+									</ul>
+									<h6 class="property-item__price">
+										$350.00
+										<span class="day">/per day</span>
+									</h6>
+									<p class="property-item__location d-flex gap-2">
+										<span class="icon text-gradient">
+											<i class="fas fa-map-marker-alt"></i>
+										</span>
+										66 Broklyant, New York America
+									</p>
+									<a href="property-details.html" class="simple-btn text-gradient fw-semibold font-14">Book Now
+										<span class="icon-right">
+											<i class="fas fa-arrow-right"></i>
+										</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="property-item style-two">
+								<div class="property-item__thumb">
+									<a href="property-details.html" class="link">
+										<img src="{{ asset('assets/images/thumbs/property-14.png') }}" alt="" class="cover-img">
+									</a>
+								</div>
+								<div class="property-item__content">
+									<h6 class="property-item__title">
+										<a href="property-details.html" class="link">
+											A Tradition of Trust in Real Estate
+										</a>
+									</h6>
+									<ul class="amenities-list flx-align">
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bed"></i>
+											</span>
+											<span class="text">3 Beds</span>
+										</li>
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bath"></i>
+											</span>
+											<span class="text">3 Baths</span>
+										</li>
+									</ul>
+									<h6 class="property-item__price">
+										$530.00
+										<span class="day">/per day</span>
+									</h6>
+									<p class="property-item__location d-flex gap-2">
+										<span class="icon text-gradient">
+											<i class="fas fa-map-marker-alt"></i>
+										</span>
+										66 Broklyant, New York America
+									</p>
+									<a href="property-details.html" class="simple-btn text-gradient fw-semibold font-14">Book Now
+										<span class="icon-right">
+											<i class="fas fa-arrow-right"></i>
+										</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="property-item style-two">
+								<div class="property-item__thumb">
+									<a href="property-details.html" class="link">
+										<img src="{{ asset('assets/images/thumbs/property-15.png') }}" alt="" class="cover-img">
+									</a>
+								</div>
+								<div class="property-item__content">
+									<h6 class="property-item__title">
+										<a href="property-details.html" class="link">
+											Target Audience and Reflect the Values
+										</a>
+									</h6>
+									<ul class="amenities-list flx-align">
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bed"></i>
+											</span>
+											<span class="text">3 Beds</span>
+										</li>
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bath"></i>
+											</span>
+											<span class="text">3 Baths</span>
+										</li>
+									</ul>
+									<h6 class="property-item__price">
+										$560.00
+										<span class="day">/per day</span>
+									</h6>
+									<p class="property-item__location d-flex gap-2">
+										<span class="icon text-gradient">
+											<i class="fas fa-map-marker-alt"></i>
+										</span>
+										66 Broklyant, New York America
+									</p>
+									<a href="property-details.html" class="simple-btn text-gradient fw-semibold font-14">Book Now
+										<span class="icon-right">
+											<i class="fas fa-arrow-right"></i>
+										</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="property-item style-two">
+								<div class="property-item__thumb">
+									<a href="property-details.html" class="link">
+										<img src="{{ asset('assets/images/thumbs/property-16.png') }}" alt="" class="cover-img">
+									</a>
+								</div>
+								<div class="property-item__content">
+									<h6 class="property-item__title">
+										<a href="property-details.html" class="link">
+											Making House Hunting an Adventure
+										</a>
+									</h6>
+									<ul class="amenities-list flx-align">
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bed"></i>
+											</span>
+											<span class="text">3 Beds</span>
+										</li>
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bath"></i>
+											</span>
+											<span class="text">3 Baths</span>
+										</li>
+									</ul>
+									<h6 class="property-item__price">
+										$500.00
+										<span class="day">/per day</span>
+									</h6>
+									<p class="property-item__location d-flex gap-2">
+										<span class="icon text-gradient">
+											<i class="fas fa-map-marker-alt"></i>
+										</span>
+										66 Broklyant, New York America
+									</p>
+									<a href="property-details.html" class="simple-btn text-gradient fw-semibold font-14">Book Now
+										<span class="icon-right">
+											<i class="fas fa-arrow-right"></i>
+										</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="property-item style-two">
+								<div class="property-item__thumb">
+									<a href="property-details.html" class="link">
+										<img src="{{ asset('assets/images/thumbs/property-17.png') }}" alt="" class="cover-img">
+									</a>
+								</div>
+								<div class="property-item__content">
+									<h6 class="property-item__title">
+										<a href="property-details.html" class="link">
+											Opening New Doors to Your Future
+										</a>
+									</h6>
+									<ul class="amenities-list flx-align">
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bed"></i>
+											</span>
+											<span class="text">3 Beds</span>
+										</li>
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bath"></i>
+											</span>
+											<span class="text">3 Baths</span>
+										</li>
+									</ul>
+									<h6 class="property-item__price">
+										$580.00
+										<span class="day">/per day</span>
+									</h6>
+									<p class="property-item__location d-flex gap-2">
+										<span class="icon text-gradient">
+											<i class="fas fa-map-marker-alt"></i>
+										</span>
+										66 Broklyant, New York America
+									</p>
+									<a href="property-details.html" class="simple-btn text-gradient fw-semibold font-14">Book Now
+										<span class="icon-right">
+											<i class="fas fa-arrow-right"></i>
+										</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="property-item style-two">
+								<div class="property-item__thumb">
+									<a href="property-details.html" class="link">
+										<img src="{{ asset('assets/images/thumbs/property-18.png') }}" alt="" class="cover-img">
+									</a>
+								</div>
+								<div class="property-item__content">
+									<h6 class="property-item__title">
+										<a href="property-details.html" class="link">
+											Your Journey to Home Starts Here
+										</a>
+									</h6>
+									<ul class="amenities-list flx-align">
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bed"></i>
+											</span>
+											<span class="text">3 Beds</span>
+										</li>
+										<li class="amenities-list__item flx-align">
+											<span class="icon text-gradient">
+												<i class="fas fa-bath"></i>
+											</span>
+											<span class="text">3 Baths</span>
+										</li>
+									</ul>
+									<h6 class="property-item__price">
+										$563.00
+										<span class="day">/per day</span>
+									</h6>
+									<p class="property-item__location d-flex gap-2">
+										<span class="icon text-gradient">
+											<i class="fas fa-map-marker-alt"></i>
+										</span>
+										66 Broklyant, New York America
+									</p>
+									<a href="property-details.html" class="simple-btn text-gradient fw-semibold font-14">Book Now
+										<span class="icon-right">
+											<i class="fas fa-arrow-right"></i>
+										</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div
+					class="col-lg-4 ps-lg-5">
+					<!-- =================== Search Sidebar Start ======================= -->
+					<div class="search-sidebar">
+						<form action="#" method="post" autocomplete="off">
+
+							<div class="search-sidebar__item">
+								<h6 class="search-sidebar__title mb-4">Property Type</h6>
+								<div class="common-check">
+									<input class="form-check-input" type="checkbox" value="" id="House">
+									<label class="form-check-label" for="House">
+										House
+									</label>
+								</div>
+								<div class="common-check">
+									<input class="form-check-input" type="checkbox" value="" id="Single">
+									<label class="form-check-label" for="Single">
+										Single Family
+									</label>
+								</div>
+								<div class="common-check">
+									<input class="form-check-input" type="checkbox" value="" id="Apartment">
+									<label class="form-check-label" for="Apartment">
+										Apartment
+									</label>
+								</div>
+								<div class="common-check">
+									<input class="form-check-input" type="checkbox" value="" id="Office">
+									<label class="form-check-label" for="Office">
+										Office Villa
+									</label>
+								</div>
+								<div class="common-check">
+									<input class="form-check-input" type="checkbox" value="" id="Luxury">
+									<label class="form-check-label" for="Luxury">
+										Luxury Home
+									</label>
+								</div>
+								<div class="common-check">
+									<input class="form-check-input" type="checkbox" value="" id="Studio">
+									<label class="form-check-label" for="Studio">
+										Studio
+									</label>
+								</div>
+							</div>
+
+							<div class="search-sidebar__item">
+								<h6 class="search-sidebar__title mb-4">Amenities</h6>
+								<div class="common-check">
+									<input class="form-check-input" type="checkbox" value="" id="Dishwasher">
+									<label class="form-check-label" for="Dishwasher">
+										Dishwasher
+									</label>
+								</div>
+								<div class="common-check">
+									<input class="form-check-input" type="checkbox" value="" id="Coverings">
+									<label class="form-check-label" for="Coverings">
+										Floor Coverings
+									</label>
+								</div>
+								<div class="common-check">
+									<input class="form-check-input" type="checkbox" value="" id="Internet">
+									<label class="form-check-label" for="Internet">
+										Internet
+									</label>
+								</div>
+								<div class="common-check">
+									<input class="form-check-input" type="checkbox" value="" id="Wardrobes">
+									<label class="form-check-label" for="Wardrobes">
+										Build Wardrobes
+									</label>
+								</div>
+								<div class="common-check">
+									<input class="form-check-input" type="checkbox" value="" id="Supermarket">
+									<label class="form-check-label" for="Supermarket">
+										Supermarket
+									</label>
+								</div>
+								<div class="common-check">
+									<input class="form-check-input" type="checkbox" value="" id="KidsZone">
+									<label class="form-check-label" for="KidsZone">
+										Kids Zone
+									</label>
+								</div>
+							</div>
+
+							<div class="search-sidebar__item">
+								<h6 class="search-sidebar__title mb-4">Price Renge</h6>
+								<div class="common-check">
+									<input class="form-check-input" type="checkbox" value="" id="LowBudget">
+									<label class="form-check-label" for="LowBudget">
+										Low Budget
+									</label>
+								</div>
+								<div class="common-check">
+									<input class="form-check-input" type="checkbox" value="" id="Medium">
+									<label class="form-check-label" for="Medium">
+										Medium
+									</label>
+								</div>
+								<div class="common-check">
+									<input class="form-check-input" type="checkbox" value="" id="HighBudget">
+									<label class="form-check-label" for="HighBudget">
+										High Budget
+									</label>
+								</div>
+							</div>
+
+							<div class="search-sidebar__item">
+								<h6 class="search-sidebar__title mb-4">Filter By Price</h6>
+								<div class="custom--range">
+									<div class="custom--range__content d-flex flex-wrap align-items-center justify-content-between mb-2">
+										<label for="amount" class="custom--range__text">Your range:</label>
+										<input type="text" class="custom--range__prices text-main text-poppins fw-500" id="amount" readonly="">
+									</div>
+									<div id="slider-range"></div>
+								</div>
+							</div>
+							<div class="search-sidebar__item">
+								<h6 class="search-sidebar__title mb-4">Bed/Bath</h6>
+								<div class="common-radio">
+									<input class="form-check-input" type="radio" name="room" id="SingleBed">
+									<label class="form-check-label" for="SingleBed">Single</label>
+								</div>
+								<div class="common-radio">
+									<input class="form-check-input" type="radio" name="room" id="Double">
+									<label class="form-check-label" for="Double">Double</label>
+								</div>
+								<div class="common-radio">
+									<input class="form-check-input" type="radio" name="room" id="UpTo3">
+									<label class="form-check-label" for="UpTo3">Up To 3</label>
+								</div>
+								<div class="common-radio">
+									<input class="form-check-input" type="radio" name="room" id="UpTo5">
+									<label class="form-check-label" for="UpTo5">Up To 5</label>
+								</div>
+							</div>
+							<div class="search-sidebar__item">
+								<h6 class="search-sidebar__title mb-4">Bed/Bath</h6>
+
+								<div class="common-radio">
+									<input class="form-check-input" type="radio" name="room" id="Buying">
+									<label class="form-check-label" for="Buying">Buying</label>
+								</div>
+								<div class="common-radio">
+									<input class="form-check-input" type="radio" name="room" id="Renting">
+									<label class="form-check-label" for="Renting">Renting</label>
+								</div>
+								<div class="common-radio">
+									<input class="form-check-input" type="radio" name="room" id="Selling">
+									<label class="form-check-label" for="Selling">Selling</label>
+								</div>
+							</div>
+						</form>
+					</div>
+					<!-- =================== Search Sidebar End ======================= -->
+				</div>
+			</div>
+			<nav aria-label="Page navigation example">
+				<ul class="pagination common-pagination">
+					<li class="page-item active">
+						<a class="page-link" href="#">1</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">2</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">3</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">4</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</section>
+	<!-- ======================== Property Section End ============================ -->
+
+	{% include '_partials/_cta.html.twig' %}
+{% endblock %}
