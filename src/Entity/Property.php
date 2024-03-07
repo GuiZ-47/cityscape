@@ -3,11 +3,16 @@
 namespace App\Entity;
 
 use App\Repository\PropertyRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Traits\TimestampTraits;
 
 #[ORM\Entity(repositoryClass: PropertyRepository::class)]
 class Property
 {
+    use TimestampTraits;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -21,9 +26,6 @@ class Property
 
     #[ORM\Column]
     private ?int $prop_sqm = null;
-
-    #[ORM\Column]
-    private ?\DateTimeImmutable $created_at = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $prop_nb_beds = null;
@@ -39,6 +41,17 @@ class Property
 
     #[ORM\Column]
     private ?int $prop_price = null;
+
+    #[ORM\OneToMany(targetEntity: Picture::class, mappedBy: 'property')]
+    private Collection $Picture;
+
+    #[ORM\ManyToOne(inversedBy: 'properties')]
+    private ?Category $Category = null;
+
+    public function __construct()
+    {
+        $this->Picture = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -77,18 +90,6 @@ class Property
     public function setPropSqm(int $prop_sqm): static
     {
         $this->prop_sqm = $prop_sqm;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeImmutable
-    {
-        return $this->created_at;
-    }
-
-    public function setCreatedAt(\DateTimeImmutable $created_at): static
-    {
-        $this->created_at = $created_at;
 
         return $this;
     }
@@ -149,6 +150,48 @@ class Property
     public function setPropPrice(int $prop_price): static
     {
         $this->prop_price = $prop_price;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Picture>
+     */
+    public function getPicture(): Collection
+    {
+        return $this->Picture;
+    }
+
+    public function addPicture(Picture $picture): static
+    {
+        if (!$this->Picture->contains($picture)) {
+            $this->Picture->add($picture);
+            $picture->setProperty($this);
+        }
+
+        return $this;
+    }
+
+    public function removePicture(Picture $picture): static
+    {
+        if ($this->Picture->removeElement($picture)) {
+            // set the owning side to null (unless already changed)
+            if ($picture->getProperty() === $this) {
+                $picture->setProperty(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->Category;
+    }
+
+    public function setCategory(?Category $Category): static
+    {
+        $this->Category = $Category;
 
         return $this;
     }

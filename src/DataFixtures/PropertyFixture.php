@@ -24,7 +24,6 @@ class PropertyFixture extends Fixture
         $property->setPropNbRooms($faker->numberBetween(0,30));
         $property->setPropSqm($faker->numberBetween(0,1000));
         $property->setPropPrice($faker->numberBetween(0,100000));
-        $property->setCreatedAt(new \DateTimeImmutable());
         $property->setPropNbBeds($faker->numberBetween(0,10));
         $property->setPropNbBaths($faker->numberBetween(0,10));
         $property->setPropNbSpaces($faker->numberBetween(0,10));

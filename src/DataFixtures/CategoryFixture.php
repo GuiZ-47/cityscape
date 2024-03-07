@@ -53,22 +53,24 @@ class CategoryFixture extends Fixture
         
         ];
 
-        foreach ($categories as $sub_array) {
+        foreach ($categories as $k => $sub_array) {
             
             $maincategory = new Category();
             $maincategory->setName($sub_array['main_categories']);
             $maincategory->setSlug($faker->shuffle('hello-world'));
             $maincategory->setMetaTitle($faker->sentence());
             $maincategory->setMetaDescription($faker->sentence());
+            $this->addReference( "main_category_".$k, $maincategory);
             $manager->persist($maincategory);
             
-            foreach ($sub_array['sub_category_array'] as $subcategory_name) {
+            foreach ($sub_array['sub_category_array'] as $k => $subcategory_name) {
                 $subcategory = new Category();
                 $subcategory->setName($subcategory_name);
                 $subcategory->setSlug($faker->shuffle('hello-world'));
                 $subcategory->setMetaTitle($faker->sentence());
                 $subcategory->setMetaDescription($faker->sentence());
                 $subcategory->setParent($maincategory);
+                $this->addReference( "sub_category_".$k, $maincategory);
                 $manager->persist($subcategory);
             };
 
@@ -77,3 +79,5 @@ class CategoryFixture extends Fixture
         ;
     }
 }
+
+// this->addreference("categoris_".$k, $category)
