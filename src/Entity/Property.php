@@ -37,6 +37,9 @@ class Property
     #[ORM\Column(nullable: true)]
     private ?bool $prop_furnished = null;
 
+    #[ORM\Column]
+    private ?int $prop_price = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -134,6 +137,18 @@ class Property
     public function setPropFurnished(?bool $prop_furnished): static
     {
         $this->prop_furnished = $prop_furnished;
+
+        return $this;
+    }
+
+    public function getPropPrice(): ?int
+    {
+        return $this->prop_price;
+    }
+
+    public function setPropPrice(int $prop_price): static
+    {
+        $this->prop_price = $prop_price;
 
         return $this;
     }

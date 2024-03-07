@@ -14,3 +14,20 @@
 
 "     {{ asset('     ') }}     "
 
+Fixtures ....
+
+
+use App\Entity\;
+// Pour utiliser faker
+use Faker\Factory;
+
+
+$faker = Factory::create('fr_FR');
+
+        for ($i = 0; $i < 25; $i++) {
+
+            $user = new User();
+            $user->set($faker->());
+           
+            $manager->persist($user);
+        };
