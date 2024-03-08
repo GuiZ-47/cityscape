@@ -11,7 +11,7 @@ Trait TimestampTraits
     private \DateTimeInterface $createdAt;
 
     #[ORM\Column(type:'datetime_immutable', options: ['default'=> 'CURRENT_TIMESTAMP'], nullable: true)]
-    private ?\DateTimeInterface $updatedAt;
+    private \DateTimeInterface $updatedAt;
 
     public function getCreatedAt(): \DateTimeInterface
     {
@@ -25,7 +25,7 @@ Trait TimestampTraits
         
     }
 
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): \DateTimeInterface
     {
         return $this->updatedAt;
     }
