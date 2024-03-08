@@ -1,5 +1,7 @@
 <?php
 
+var_dump ( new DateTimeImmutable);
+
 class Categorytest
 {
     #[ORM\Id]
@@ -181,7 +183,7 @@ foreach ($categories as $sub_array) {
     }
     // echo $sub_array['main_categories'];
     // echo '<br>';
-    print_r($sub_object_array);
+    // print_r($sub_object_array);
     // echo '<br>';
 
 }

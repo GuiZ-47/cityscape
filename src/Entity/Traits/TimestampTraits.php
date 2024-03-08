@@ -2,15 +2,14 @@
 
 namespace App\Entity\Traits;
 
-
 use Doctrine\ORM\Mapping as ORM;
 
-Trait TimestampTraits
+trait TimestampTraits
 {
     #[ORM\Column(type: 'datetime_immutable', options: ['default'=> 'CURRENT_TIMESTAMP'], nullable: true)]
     private \DateTimeInterface $createdAt;
 
-    #[ORM\Column(type:'datetime_immutable', options: ['default'=> 'CURRENT_TIMESTAMP'], nullable: true)]
+    #[ORM\Column(type: 'datetime_immutable', options: ['default'=> 'CURRENT_TIMESTAMP'], nullable: true)]
     private \DateTimeInterface $updatedAt;
 
     public function getCreatedAt(): \DateTimeInterface
@@ -19,8 +18,9 @@ Trait TimestampTraits
     }
 
     #[ORM\PrePersist]
-    public function setCreatedAt(\DateTimeInterface $createdAt): void
+    public function setCreatedAt(): void
     {
+        
         $this->createdAt = new \DateTimeImmutable;
         
     }
@@ -31,7 +31,7 @@ Trait TimestampTraits
     }
 
     #[ORM\PreUpdate]
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): void
+    public function setUpdatedAt(): void
     {
         $this->updatedAt = new \DateTimeImmutable;
     }

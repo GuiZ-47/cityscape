@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Traits\TimestampTraits;
 
 #[ORM\Entity(repositoryClass: PropertyRepository::class)]
+#[ORM\HasLifecycleCallbacks]
+
 class Property
 {
     use TimestampTraits;
