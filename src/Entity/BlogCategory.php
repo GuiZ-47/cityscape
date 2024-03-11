@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\AmenityRepository;
+use App\Repository\BlogCategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Traits\TimestampTraits;
 use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 
-#[ORM\Entity(repositoryClass: AmenityRepository::class)]
+#[ORM\Entity(repositoryClass: BlogCategoryRepository::class)]
 #[ORM\HasLifecycleCallbacks]
-class Amenity
-{
+class BlogCategory
+{   
     use TimestampTraits;
 
     #[ORM\Id]
@@ -21,8 +21,8 @@ class Amenity
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\ManyToOne(inversedBy: 'amenities')]
-    private ?Property $property = null;
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
 
     public function getId(): ?int
     {
@@ -41,16 +41,15 @@ class Amenity
         return $this;
     }
 
-    public function getProperty(): ?Property
+    public function getSlug(): ?string
     {
-        return $this->property;
+        return $this->slug;
     }
 
-    public function setProperty(?Property $property): static
+    public function setSlug(string $slug): static
     {
-        $this->property = $property;
+        $this->slug = $slug;
 
         return $this;
     }
-
 }

@@ -5,8 +5,10 @@ namespace App\Entity;
 use App\Repository\PropertyRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Traits\TimestampTraits;
+use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 
 #[ORM\Entity(repositoryClass: PropertyRepository::class)]
 #[ORM\HasLifecycleCallbacks]
@@ -50,9 +52,29 @@ class Property
     #[ORM\ManyToOne(inversedBy: 'properties')]
     private ?Category $Category = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $propTitle = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $propDescription = null;
+
+    #[ORM\ManyToOne(inversedBy: 'properties')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $AgentImmobilier = null;
+
+    #[ORM\OneToMany(targetEntity: Amenity::class, mappedBy: 'property')]
+    private Collection $amenities;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $propLongitude = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $propLatitude = null;
+
     public function __construct()
     {
         $this->Picture = new ArrayCollection();
+        $this->amenities = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -194,6 +216,96 @@ class Property
     public function setCategory(?Category $Category): static
     {
         $this->Category = $Category;
+
+        return $this;
+    }
+
+    public function getPropTitle(): ?string
+    {
+        return $this->propTitle;
+    }
+
+    public function setPropTitle(string $propTitle): static
+    {
+        $this->propTitle = $propTitle;
+
+        return $this;
+    }
+
+    public function getPropDescription(): ?string
+    {
+        return $this->propDescription;
+    }
+
+    public function setPropDescription(string $propDescription): static
+    {
+        $this->propDescription = $propDescription;
+
+        return $this;
+    }
+
+    public function getAgentImmobilier(): ?User
+    {
+        return $this->AgentImmobilier;
+    }
+
+    public function setAgentImmobilier(?User $AgentImmobilier): static
+    {
+        $this->AgentImmobilier = $AgentImmobilier;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Amenity>
+     */
+    public function getAmenities(): Collection
+    {
+        return $this->amenities;
+    }
+
+    public function addAmenity(Amenity $amenity): static
+    {
+        if (!$this->amenities->contains($amenity)) {
+            $this->amenities->add($amenity);
+            $amenity->setProperty($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAmenity(Amenity $amenity): static
+    {
+        if ($this->amenities->removeElement($amenity)) {
+            // set the owning side to null (unless already changed)
+            if ($amenity->getProperty() === $this) {
+                $amenity->setProperty(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getPropLongitude(): ?string
+    {
+        return $this->propLongitude;
+    }
+
+    public function setPropLongitude(?string $propLongitude): static
+    {
+        $this->propLongitude = $propLongitude;
+
+        return $this;
+    }
+
+    public function getPropLatitude(): ?string
+    {
+        return $this->propLatitude;
+    }
+
+    public function setPropLatitude(?string $propLatitude): static
+    {
+        $this->propLatitude = $propLatitude;
 
         return $this;
     }

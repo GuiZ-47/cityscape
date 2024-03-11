@@ -7,9 +7,15 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+use App\Entity\Traits\TimestampTraits;
+use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
+
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Category
-{
+{   
+    use TimestampTraits;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -20,12 +26,6 @@ class Category
 
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $metaTitle = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $metaDescription = null;
 
     #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'categories')]
     private ?self $parent = null;
@@ -67,30 +67,6 @@ class Category
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
-
-        return $this;
-    }
-
-    public function getMetaTitle(): ?string
-    {
-        return $this->metaTitle;
-    }
-
-    public function setMetaTitle(string $metaTitle): static
-    {
-        $this->metaTitle = $metaTitle;
-
-        return $this;
-    }
-
-    public function getMetaDescription(): ?string
-    {
-        return $this->metaDescription;
-    }
-
-    public function setMetaDescription(string $metaDescription): static
-    {
-        $this->metaDescription = $metaDescription;
 
         return $this;
     }

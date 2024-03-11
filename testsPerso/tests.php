@@ -1,6 +1,24 @@
 <?php
 
-var_dump ( new DateTimeImmutable);
+
+// // Récupérer une image sur internet et la sauvegarder dans un dossier
+// function curl_get_contents($url)
+// {
+//   $ch = curl_init($url);
+//   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+//   curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+//   curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+//   curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+//   $data = curl_exec($ch);
+//   curl_close($ch);
+//   return $data;
+// }
+
+// $url = 'https://picsum.photos/1290/584';
+// $imagename = rand(1, 1000) . '.jpg';
+// $img = 'C:\laragon\www\cityscape\public\assets\images\biens\\' . $imagename;
+
+// file_put_contents($img, curl_get_contents($url));
 
 class Categorytest
 {
