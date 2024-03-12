@@ -46,7 +46,7 @@ class Property
     #[ORM\Column]
     private ?int $prop_price = null;
 
-    #[ORM\OneToMany(targetEntity: Picture::class, mappedBy: 'property')]
+    #[ORM\OneToMany(targetEntity: Picture::class, mappedBy: 'property', cascade:['persist','remove'])]
     private Collection $Picture;
 
     #[ORM\ManyToOne(inversedBy: 'properties')]

@@ -1,19 +1,20 @@
 {% if ea.crud.currentAction == 'detail' %}
-    <ul class="list-group">
-        {% for picture in field.value %}
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            {{ picture.id }}
-            <span class="badge badge-primary"> </span>
-            <img src="{{ asset('assets/images/property/' ~ picture.imageName) }}" alt="">  </span>
-        </li>
-        {% endfor %}
-    </ul>
-{% else %}
-<ul class="list-group">
-    {% for picture in field.value %}
-    <li class="list-group-item d-flex justify-content-between align-items-center" style="width : 150px">
-        <img src="{{ asset('assets/images/property/' ~ picture.imageName) }}" alt="" style="width : 100%">  </span>
-    </li>
-    {% endfor %}
-</ul>
-{% endif %}
+	<ul class="list-group">
+		{% for picture in field.value %}
+			<li class="list-group-item d-flex justify-content-between align-items-center">
+				Last Update:
+				{% if picture.updatedAt %}
+					{{ picture.updatedAt|date('d-m-Y G:i:s') }}
+                {% else %}
+                    {{ picture.createdAt|date('d-m-Y G:i:s') }}
+				{% endif %}
+				<img src="{{ asset('assets/images/property/' ~ picture.imageName) }}" alt="">
+			</li>
+		</span>
+	</li>
+{% endfor %}</ul>{% else %}<ul class="list-group">
+{% for picture in field.value %}
+	<li class="list-group-item d-flex justify-content-between align-items-center" style="width : 200px">
+		<img src="{{ asset('assets/images/property/' ~ picture.imageName) }}" alt="" style="width : 90%">
+	</li>
+</span></li>{% endfor %}</ul>{% endif %}

@@ -15,7 +15,7 @@ trait TimestampTraits
     #[ORM\Column(type: 'datetime_immutable', options: ['default' => 'CURRENT_TIMESTAMP'], nullable: true)]
     private ?\DateTimeInterface $deletedAt;
 
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
@@ -26,7 +26,7 @@ trait TimestampTraits
         $this->createdAt = new \DateTimeImmutable;
     }
 
-    public function getUpdatedAt(): \DateTimeInterface
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
     }

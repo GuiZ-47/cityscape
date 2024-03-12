@@ -5,7 +5,9 @@ namespace App\Controller\Admin;
 use App\Entity\Property;
 use App\Entity\Picture;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -30,7 +32,7 @@ class PropertyCrudController extends AbstractCrudController
     {
         return $crud
             ->setEntityLabelInPlural("Propriétés")
-            ->setEntityLabelInSingular("une propriété")
+            ->setEntityLabelInSingular("Propriété")
             //->setDateFormat('...')
         ;
     }
@@ -40,15 +42,20 @@ class PropertyCrudController extends AbstractCrudController
         return [
             // IdField::new('id'),
 
-            TextField::new('prop_housing_type'),
-            // TextEditorField::new('prop_housing_type'),
+            TextField::new('prop_housing_type', "Type"),
+            IntegerField::new('prop_nb_rooms', "Chambres"),
+            IntegerField::new('prop_sqm', "Mètres carrés"),
+            IntegerField::new('prop_price',"Prix"),
+            IntegerField::new('prop_nb_beds', "Lits"),
+            IntegerField::new('prop_nb_baths', "Salles de bains"),
+            IntegerField::new('prop_nb_spaces', "Places de parking"),
+            BooleanField::new('prop_furnished', "Meublé"),
 
-            // Empêche l'ouverture de l'éditeur
             CollectionField::new('Picture')
                 ->setTemplatePath('bundles/EasyAdminBundle/page/picture.html.twig')
                 ->useEntryCrudForm()
-                // ->setEntryIsComplex()
-                // ->setEntryType(PictureType::class)
+                ->renderExpanded(),
+ 
         ];
     }
 
@@ -56,20 +63,18 @@ class PropertyCrudController extends AbstractCrudController
     {
         return $filters
             ->add(ChoiceFilter::new("prop_housing_type", "Type de propriété")->setChoices([
-                "Maison" => "house",
-                "Pavillon" => "single_family",
-                "Appartement" => "apartment",
-                "Bureau" => "office",
-                "Villa" => "villa",
-                "Luxe" => "luxury_home",
-                "Studio" => "studio"
+                "Maison" => "Houses",
+                "Appartement" => "Apartments",
+                "Bureau" => "Office",
+                "Villa" => "Villa",
             ]))
-            ->add(NumericFilter::new("prop_nb_rooms", "Nombre de chambres"))
-            ->add(NumericFilter::new("prop_sqm", "Nombre de mètres carrés"))
-            ->add(NumericFilter::new("prop_price", "Prix"))
-            ->add(NumericFilter::new("prop_nb_beds", "Nombre de baignoires"))
-            ->add(NumericFilter::new("prop_nb_spaces", "Nombre de places de parking"))
-            ->add(BooleanFilter::new("prop_furnished", "Meublé ou non ?"))
+            ->add(NumericFilter::new("prop_price"))
+            ->add(NumericFilter::new("prop_nb_rooms"))
+            ->add(NumericFilter::new("prop_sqm"))
+            ->add(NumericFilter::new("prop_nb_beds"))
+            ->add(NumericFilter::new("prop_nb_baths"))
+            ->add(NumericFilter::new("prop_nb_spaces"))
+            ->add(BooleanFilter::new("prop_furnished"))
         ;
     }
 
