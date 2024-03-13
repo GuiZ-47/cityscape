@@ -6,6 +6,7 @@ use App\Repository\PictureRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Traits\TimestampTraits;
+use Stringable;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
@@ -14,7 +15,7 @@ use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 #[ORM\HasLifecycleCallbacks]
 
 #[Vich\Uploadable]
-class Picture
+class Picture implements Stringable
 {   
     use TimestampTraits;
 
@@ -98,4 +99,7 @@ class Picture
         return $this;
     }
 
+    public function __toString(): string  {
+        return (string) $this->imageName;
+    }
 }

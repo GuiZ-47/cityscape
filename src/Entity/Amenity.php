@@ -2,9 +2,9 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\TimestampTraits;
 use App\Repository\AmenityRepository;
 use Doctrine\ORM\Mapping as ORM;
-use App\Entity\Traits\TimestampTraits;
 use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 
 #[ORM\Entity(repositoryClass: AmenityRepository::class)]

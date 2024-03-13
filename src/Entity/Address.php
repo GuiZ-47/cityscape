@@ -35,9 +35,8 @@ class Address
     #[ORM\JoinColumn(nullable: false)]
     private ?Property $add_property = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Country $add_country = null;
+    #[ORM\Column(length: 255)]
+    private ?string $country = null;
 
     public function getId(): ?int
     {
@@ -128,15 +127,16 @@ class Address
         return $this;
     }
 
-    public function getAddCountry(): ?Country
+    public function getCountry(): ?string
     {
-        return $this->add_country;
+        return $this->country;
     }
 
-    public function setAddCountry(?Country $add_country): static
+    public function setCountry(string $country): static
     {
-        $this->add_country = $add_country;
+        $this->country = $country;
 
         return $this;
     }
+
 }

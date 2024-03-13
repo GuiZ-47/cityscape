@@ -23,8 +23,9 @@ class AddressFixtures extends Fixture
         //     $address->setAddCity($faker->word());
         //     $address->setAddState($faker->region());
         //     $address->setAddZip($faker->departmentNumber());
+        //     $address->setCountry($faker->countryCode());
+        
         //     $address->setAddProperty();
-        //     $address->setAddCountry();
            
         //     $manager->persist($address);
         // };

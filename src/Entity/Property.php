@@ -64,12 +64,14 @@ class Property
 
     #[ORM\OneToMany(targetEntity: Amenity::class, mappedBy: 'property')]
     private Collection $amenities;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $propLongitude = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $propLatitude = null;
+
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    private ?array $propFeature = null;
 
     public function __construct()
     {
@@ -306,6 +308,18 @@ class Property
     public function setPropLatitude(?string $propLatitude): static
     {
         $this->propLatitude = $propLatitude;
+
+        return $this;
+    }
+
+    public function getPropFeature(): ?array
+    {
+        return $this->propFeature;
+    }
+
+    public function setPropFeature(?array $propFeature): static
+    {
+        $this->propFeature = $propFeature;
 
         return $this;
     }

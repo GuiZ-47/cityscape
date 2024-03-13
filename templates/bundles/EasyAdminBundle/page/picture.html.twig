@@ -2,19 +2,24 @@
 	<ul class="list-group">
 		{% for picture in field.value %}
 			<li class="list-group-item d-flex justify-content-between align-items-center">
-				Last Update:
-				{% if picture.updatedAt %}
-					{{ picture.updatedAt|date('d-m-Y G:i:s') }}
-                {% else %}
-                    {{ picture.createdAt|date('d-m-Y G:i:s') }}
-				{% endif %}
-				<img src="{{ asset('assets/images/property/' ~ picture.imageName) }}" alt="">
+				Last Update: 
+				<span class="badge badge-primary">
+					{% if picture.updatedAt %}
+						{{ picture.updatedAt|date('d-m-Y G:i:s') }}
+					{% else %}
+						{{ picture.createdAt|date('d-m-Y G:i:s') }}
+					{% endif %}
+				</span>
+				<img src="{{ asset('assets/images/property/' ~ picture.imageName) }}" alt="" style="max-width : 80%">
 			</li>
-		</span>
-	</li>
-{% endfor %}</ul>{% else %}<ul class="list-group">
-{% for picture in field.value %}
-	<li class="list-group-item d-flex justify-content-between align-items-center" style="width : 200px">
-		<img src="{{ asset('assets/images/property/' ~ picture.imageName) }}" alt="" style="width : 90%">
-	</li>
-</span></li>{% endfor %}</ul>{% endif %}
+		{% endfor %}
+	</ul>
+{% else %}
+	<ul class="list-group">
+		{% for picture in field.value %}
+			<li class="list-group-item d-flex justify-content-between align-items-center" style="width : 200px">
+				<img src="{{ asset('assets/images/property/' ~ picture.imageName) }}" alt="" style="width : 90%">
+			</li>
+		{% endfor %}
+	</ul>
+{% endif %}

@@ -46,6 +46,13 @@ class PropertyFixtures extends Fixture implements DependentFixtureInterface
             $property->setPropNbBaths($faker->numberBetween(0, 10));
             $property->setPropNbSpaces($faker->numberBetween(0, 10));
             $property->setPropFurnished($faker->numberBetween(0, 1));
+
+            $featArray =[];
+            for ($i = 1; $i < rand(1, 6); $i++) {
+                $featArray[] = $faker->sentence;
+            }           
+            $property->setPropFeature($featArray);
+            
             // Récupération des références pour les liaisons
             $property->setCategory($this->getReference('category_' . rand(1, 5)));
             $property->setAgentImmobilier($this->getReference('agent'));

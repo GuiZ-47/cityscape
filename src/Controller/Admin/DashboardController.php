@@ -2,6 +2,12 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Address;
+use App\Entity\Amenity;
+use App\Entity\ArticleBlog;
+use App\Entity\BlogCategory;
+use App\Entity\Category;
+use App\Entity\QuestionResponse;
 use App\Entity\User;
 use App\Entity\Picture;
 use App\Entity\Property;
@@ -52,12 +58,27 @@ class DashboardController extends AbstractDashboardController
             ->setAction('edit')
             ->setEntityId(2);
 
-
         yield MenuItem::section('Propriétés') ;
         yield MenuItem::linkToCrud('Property', 'fa-solid fa-house', Property::class);
 
         yield MenuItem::section('Images') ;
         yield MenuItem::linkToCrud('Picture', 'fa-regular fa-image', Picture::class);
+
+        yield MenuItem::section('Amenity') ;
+        yield MenuItem::linkToCrud('Amenity', 'fa-regular fa-image', Amenity::class);
+
+        yield MenuItem::section('ArticleBlog') ;
+        yield MenuItem::linkToCrud('ArticleBlog', 'fa-regular fa-image', ArticleBlog::class);
+        
+        yield MenuItem::section('Catégories') ;
+        yield MenuItem::linkToCrud('BlogCategory', 'fa-regular fa-image', BlogCategory::class);
+        yield MenuItem::linkToCrud('Category', 'fa-regular fa-image', Category::class);
     
+        yield MenuItem::section('Address') ;
+        yield MenuItem::linkToCrud('Address', 'fa-regular fa-image', Address::class);
+
+        yield MenuItem::section('FAQ') ;
+        yield MenuItem::linkToCrud('FAQ', 'fa-regular fa-image', QuestionResponse::class);
+
     }
 }

@@ -5,9 +5,11 @@ namespace App\Controller\Admin;
 use App\Entity\Property;
 use App\Entity\Picture;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -45,13 +47,17 @@ class PropertyCrudController extends AbstractCrudController
             TextField::new('prop_housing_type', "Type"),
             IntegerField::new('prop_nb_rooms', "Chambres"),
             IntegerField::new('prop_sqm', "Mètres carrés"),
-            IntegerField::new('prop_price',"Prix"),
+            MoneyField::new('prop_price',"Prix")
+            ->setCurrency('EUR')
+            ->setStoredAsCents(false)
+            ->setNumDecimals(0),
             IntegerField::new('prop_nb_beds', "Lits"),
             IntegerField::new('prop_nb_baths', "Salles de bains"),
             IntegerField::new('prop_nb_spaces', "Places de parking"),
             BooleanField::new('prop_furnished', "Meublé"),
+            ArrayField::new("propFeature","Features"),
 
-            CollectionField::new('Picture')
+            CollectionField::new('Picture', 'Images')
                 ->setTemplatePath('bundles/EasyAdminBundle/page/picture.html.twig')
                 ->useEntryCrudForm()
                 ->renderExpanded(),
