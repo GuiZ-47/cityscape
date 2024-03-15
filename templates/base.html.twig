@@ -74,7 +74,11 @@
 		{% include '_partials/_canvas.html.twig' %}
 
 		<main class="body-bg">
-			{% include '_partials/_header_top.html.twig' %}
+
+			{# Ce n'est plus necessaire puisque qu'on va utiliser à la place la fonction menu() de Menu Controller #}
+			{# {% include '_partials/_header_top.html.twig' %} #}
+
+			{{ render (controller ('App\\Controller\\Menu\\MenuController::menu')) }}
 
 			{% block body %}{% endblock %}
 

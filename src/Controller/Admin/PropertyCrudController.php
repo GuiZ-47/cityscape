@@ -45,6 +45,8 @@ class PropertyCrudController extends AbstractCrudController
         return [
             // IdField::new('id'),
 
+            TextField::new('propTitle', "Nom"),
+            TextField::new('propSlug', "Slug"),
             TextField::new('prop_housing_type', "Type"),
             IntegerField::new('prop_nb_rooms', "Chambres"),
             IntegerField::new('prop_sqm', "Mètres carrés"),
@@ -57,12 +59,12 @@ class PropertyCrudController extends AbstractCrudController
             IntegerField::new('prop_nb_spaces', "Places de parking"),
             BooleanField::new('prop_furnished', "Meublé"),
             ArrayField::new("propFeature","Features"),
-
+            
             CollectionField::new('Picture', 'Images')
-                ->setTemplatePath('bundles/EasyAdminBundle/page/picture.html.twig')
-                ->useEntryCrudForm()
-                ->renderExpanded(),
- 
+            ->setTemplatePath('bundles/EasyAdminBundle/page/picture.html.twig')
+            ->useEntryCrudForm()
+            ->renderExpanded(),
+            
         ];
     }
 

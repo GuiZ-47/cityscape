@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+
 use App\Repository\PropertyRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -72,6 +73,9 @@ class Property
 
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
     private ?array $propFeature = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $propSlug = null;
 
     public function __construct()
     {
@@ -320,6 +324,18 @@ class Property
     public function setPropFeature(?array $propFeature): static
     {
         $this->propFeature = $propFeature;
+
+        return $this;
+    }
+
+    public function getPropSlug(): ?string
+    {
+        return $this->propSlug;
+    }
+
+    public function setPropSlug(string $propSlug): static
+    {
+        $this->propSlug = $propSlug;
 
         return $this;
     }

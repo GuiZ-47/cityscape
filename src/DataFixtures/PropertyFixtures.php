@@ -36,7 +36,7 @@ class PropertyFixtures extends Fixture implements DependentFixtureInterface
         for ($ii = 1; $ii <10; $ii++) {
 
             $property = new Property();
-            $property->setPropTitle($faker->sentence(3));
+            $property->setPropTitle($faker->word());
             $property->setPropDescription($faker->text(200));
             $property->setPropHousingType($faker->randomElement(['Houses', 'Apartments', 'Office', 'Villa']));
             $property->setPropNbRooms($faker->numberBetween(0, 30));
@@ -46,6 +46,7 @@ class PropertyFixtures extends Fixture implements DependentFixtureInterface
             $property->setPropNbBaths($faker->numberBetween(0, 10));
             $property->setPropNbSpaces($faker->numberBetween(0, 10));
             $property->setPropFurnished($faker->numberBetween(0, 1));
+            $property->setPropSlug('details-property-'. $property->getPropTitle());
 
             $featArray =[];
             for ($i = 1; $i < rand(1, 6); $i++) {

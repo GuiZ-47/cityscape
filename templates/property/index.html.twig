@@ -95,75 +95,68 @@
 				</div>
 			</div>
 			{# fonction dump pour afficher les variables dans twig #}
-	{# {{ dump(Properties) }} #}
- 
+			{# {{ dump(Properties) }} #}
+
 			<div class="list-grid-item-wrapper show-two-item row gy-4">
 				{% for property in Properties %}
-				
-				<div class="col-lg-4 col-sm-6">
-					<div class="property-item style-two">
-						<div class="property-item__thumb">
-							<a href="property-details.html" class="link">
-								<img src="{{ asset('assets/images/thumbs/property-7.png') }}" alt="" class="cover-img">
-							</a>
-						</div>
-						<div class="property-item__content">
-							<h6 class="property-item__title">
-								<a href="property-details.html" class="link">
-									{{ property.getPropTitle }}
+
+					<div class="col-lg-4 col-sm-6">
+						<div class="property-item style-two">
+							<div
+								class="property-item__thumb">
+								{# à revoir comment fonctionne les liens dynamiques avec les slugs #}
+								<a href="{{ path('app_property_details',{'propSlug':property.propSlug}) }}" class="link">
+									{% set pictures = property.Picture|first %}
+									{% if pictures is not null %}
+										{# on utilise le budle et le mapping de vitch uploader #}
+										<img src="{{ vich_uploader_asset(pictures, 'imageFile') }}" alt="" class="cover-img">
+									{% endif %}
 								</a>
-							</h6>
-							<ul class="amenities-list flx-align">
-								<li class="amenities-list__item flx-align">
+							</div>
+							<div class="property-item__content">
+								<h6 class="property-item__title">
+									<a href="{{ path('app_property_details',{'propSlug':property.propSlug}) }}" class="link">
+										{{ property.getPropTitle }}
+									</a>
+								</h6>
+								<ul class="amenities-list flx-align">
+									<li class="amenities-list__item flx-align">
+										<span class="icon text-gradient">
+											<i class="fas fa-bed"></i>
+										</span>
+										<span class="text">{{ property.getPropNbBeds }}</span>
+									</li>
+									<li class="amenities-list__item flx-align">
+										<span class="icon text-gradient">
+											<i class="fas fa-bath"></i>
+										</span>
+										<span class="text">3 Baths</span>
+									</li>
+								</ul>
+								<h6 class="property-item__price">
+									{{ property.getPropPrice|format_currency('EUR') }}
+									<span class="day">/per day</span>
+								</h6>
+								<p class="property-item__location d-flex gap-2">
 									<span class="icon text-gradient">
-										<i class="fas fa-bed"></i>
+										<i class="fas fa-map-marker-alt"></i>
 									</span>
-									<span class="text">{{ property.getPropNbBeds }}</span>
-								</li>
-								<li class="amenities-list__item flx-align">
-									<span class="icon text-gradient">
-										<i class="fas fa-bath"></i>
+									66 Broklyant, New York America
+								</p>
+								<a href="{{ path('app_property_details',{'propSlug':property.propSlug}) }}" class="simple-btn text-gradient fw-semibold font-14">Book Now
+									<span class="icon-right">
+										<i class="fas fa-arrow-right"></i>
 									</span>
-									<span class="text">3 Baths</span>
-								</li>
-							</ul>
-							<h6 class="property-item__price">
-								{{ property.getPropPrice|format_currency('EUR') }}
-								<span class="day">/per day</span>
-							</h6>
-							<p class="property-item__location d-flex gap-2">
-								<span class="icon text-gradient">
-									<i class="fas fa-map-marker-alt"></i>
-								</span>
-								66 Broklyant, New York America
-							</p>
-							<a href="property-details.html" class="simple-btn text-gradient fw-semibold font-14">Book Now
-								<span class="icon-right">
-									<i class="fas fa-arrow-right"></i>
-								</span>
-							</a>
+								</a>
+							</div>
 						</div>
 					</div>
-				</div>
 
 				{% endfor %}
 
 			</div>
 			<nav aria-label="Page navigation example">
-				<ul class="pagination common-pagination">
-					<li class="page-item active">
-						<a class="page-link" href="#">1</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">2</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">3</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">4</a>
-					</li>
-				</ul>
+				{{ knp_pagination_render(Properties) }}
 			</nav>
 		</div>
 	</section>

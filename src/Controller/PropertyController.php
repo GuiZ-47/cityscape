@@ -3,20 +3,45 @@
 namespace App\Controller;
 
 use App\Repository\PropertyRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 class PropertyController extends AbstractController
 {
+    // ----------------------- Version sans pagination ------------
+    // #[Route('/property', name: 'app_property')]
+    // public function index(PropertyRepository $property, EntityManagerInterface $em, PaginatorInterface $paginator, Request $request): Response
+    // {   
+    //     // Afficher tout les ($property);
+    //     // dd($property->findAll());
+
+    //     $properties = $property->filterPropertyByCategory();
+
+    //     return $this->render('property/index.html.twig', [
+    //         'Properties' => $property->findAll(),
+    //         'breadcrumb_title'=> 'Property',
+    //     ]);
+    // }
+
     #[Route('/property', name: 'app_property')]
-    public function index(PropertyRepository $property): Response
+    public function index(PropertyRepository $property, EntityManagerInterface $em, PaginatorInterface $paginator, Request $request): Response
     {   
         // Afficher tout les ($property);
         // dd($property->findAll());
 
+        $properties = $property->filterPropertyByCategory();
+
+        $pagination = $paginator->paginate(
+            $properties, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            3 /*limit per page*/
+        );
         return $this->render('property/index.html.twig', [
-            'Properties' => $property->findAll(),
+            'Properties' => $pagination,
             'breadcrumb_title'=> 'Property',
         ]);
     }
