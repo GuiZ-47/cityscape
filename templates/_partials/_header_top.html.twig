@@ -46,14 +46,18 @@
 
 				<ul class="nav-menu flx-align ">
 
+					<li class="nav-menu__item">
+						<a href="{{ path('app_home') }}" class="nav-menu__link">Accueil</a>
+					</li>
+
 					{% for menu in Categories %}
 						<li class="nav-menu__item has-submenu">
 							<a href="javascript:void(0)" class="nav-menu__link">{{ menu.name }}</a>
                             <ul class="nav-submenu">
-                                    {% for sb in menu.categories %}
+                                    {% for subMenu in menu.categories %}
 									<li class="nav-submenu__item">
-										<a href="/ {{ sb.slug }}" class="nav-submenu__link">
-											{{ sb.name }}
+										<a href=" {{ path('app_property', {'menu': menu.slug, 'subMenu': subMenu.slug, 'id': subMenu.id}) }} " class="nav-submenu__link">
+											{{ subMenu.name }}
                                         </a>
 									</li>
                                     {% endfor %}
@@ -63,7 +67,7 @@
 					{% endfor %}
 
 					<li class="nav-menu__item">
-						<a href="contact.html" class="nav-menu__link">Contact</a>
+						<a href="{{ path('app_contact') }}" class="nav-menu__link">Contact</a>
 					</li>
 				</ul>
 			</div>

@@ -27,19 +27,24 @@ class PropertyController extends AbstractController
     //     ]);
     // }
 
-    #[Route('/property', name: 'app_property')]
-    public function index(PropertyRepository $property, EntityManagerInterface $em, PaginatorInterface $paginator, Request $request): Response
+    #[Route('/property/{menu}/{id}-{subMenu}', name: 'app_property')]
+    public function index($id, $subMenu, PropertyRepository $property, EntityManagerInterface $em, PaginatorInterface $paginator, Request $request): Response
     {   
         // Afficher tout les ($property);
         // dd($property->findAll());
 
-        $properties = $property->filterPropertyByCategory();
+        $propertiesFiltered = $property->filterPropertyByCategory($id, $subMenu);
 
+        // KNP Paginator
         $pagination = $paginator->paginate(
-            $properties, /* query NOT result */
+            $propertiesFiltered, /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
-            3 /*limit per page*/
+            9 /*limit per page*/
         );
+
+        // Afficher $pagination
+        // dd($pagination);
+
         return $this->render('property/index.html.twig', [
             'Properties' => $pagination,
             'breadcrumb_title'=> 'Property',

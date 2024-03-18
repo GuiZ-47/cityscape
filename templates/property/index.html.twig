@@ -124,17 +124,17 @@
 										<span class="icon text-gradient">
 											<i class="fas fa-bed"></i>
 										</span>
-										<span class="text">{{ property.getPropNbBeds }}</span>
+										<span class="text">{{ property.getPropNbBeds }} Beds</span>
 									</li>
 									<li class="amenities-list__item flx-align">
 										<span class="icon text-gradient">
 											<i class="fas fa-bath"></i>
 										</span>
-										<span class="text">3 Baths</span>
+										<span class="text">{{ property.getPropNbBaths }} Baths</span>
 									</li>
 								</ul>
 								<h6 class="property-item__price">
-									{{ property.getPropPrice|format_currency('EUR') }}
+									{{ property.getPropPrice|format_currency('EUR' ) }}
 									<span class="day">/per day</span>
 								</h6>
 								<p class="property-item__location d-flex gap-2">

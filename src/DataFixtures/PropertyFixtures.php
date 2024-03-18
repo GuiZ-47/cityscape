@@ -33,20 +33,25 @@ class PropertyFixtures extends Fixture implements DependentFixtureInterface
             return $data;
         }
 
-        for ($ii = 1; $ii <10; $ii++) {
+        for ($ii = 1; $ii <50; $ii++) {
 
             $property = new Property();
             $property->setPropTitle($faker->word());
+            $property->setPropSlug($property->getPropTitle());
             $property->setPropDescription($faker->text(200));
             $property->setPropHousingType($faker->randomElement(['Houses', 'Apartments', 'Office', 'Villa']));
-            $property->setPropNbRooms($faker->numberBetween(0, 30));
             $property->setPropSqm($faker->numberBetween(0, 1000));
             $property->setPropPrice($faker->numberBetween(0, 100000));
-            $property->setPropNbBeds($faker->numberBetween(0, 10));
-            $property->setPropNbBaths($faker->numberBetween(0, 10));
+            
+            $property->setPropNbRooms($faker->numberBetween(0, 30));
+            $property->setPropNbBeds($faker->numberBetween(1, 10));
+            $property->setPropNbBaths($faker->numberBetween(1, 5));
             $property->setPropNbSpaces($faker->numberBetween(0, 10));
+
             $property->setPropFurnished($faker->numberBetween(0, 1));
-            $property->setPropSlug('details-property-'. $property->getPropTitle());
+
+            $property->setPropLatitude($faker->latitude);
+            $property->setPropLongitude($faker->longitude);
 
             $featArray =[];
             for ($i = 1; $i < rand(1, 6); $i++) {
@@ -60,7 +65,7 @@ class PropertyFixtures extends Fixture implements DependentFixtureInterface
 
             $manager->persist($property);
 
-            for ($i = 0; $i < rand(1, 5); $i++) {
+            for ($i = 0; $i < rand(1, 2); $i++) {
 
                 // Récupérer une image sur internet et la sauvegarder dans un dossier
 

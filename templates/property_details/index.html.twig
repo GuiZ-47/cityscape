@@ -19,26 +19,23 @@
 			<div class="row gy-4">
 				<div class="col-lg-8">
 					<div class="row gy-4">
-						<div class="col-sm-12 col-6">
-							<div class="property-details__thumb">
-								<img src="{{ asset('assets/images/thumbs/property-details-1.png') }}" alt="" class="cover-img">
-							</div>
-						</div>
-						<div class="col-sm-4 col-6">
-							<div class="property-details__thumb">
-								<img src="{{ asset('assets/images/thumbs/property-details-2.png') }}" alt="" class="cover-img">
-							</div>
-						</div>
-						<div class="col-sm-4 col-6">
-							<div class="property-details__thumb">
-								<img src="{{ asset('assets/images/thumbs/property-details-3.png') }}" alt="" class="cover-img">
-							</div>
-						</div>
-						<div class="col-sm-4 col-6">
-							<div class="property-details__thumb">
-								<img src="{{ asset('assets/images/thumbs/property-details-4.png') }}" alt="" class="cover-img">
-							</div>
-						</div>
+
+						{% for picture in property.Picture %}
+							{% if loop.first %}
+								<div class="col-sm-12 col-6">
+									<div class="property-details__thumb">
+										<img src="{{ vich_uploader_asset(picture, 'imageFile') }}" alt="" class="cover-img">
+									</div>
+								</div>
+							{% else %}
+								<div class="col-sm-4 col-6">
+									<div class="property-details__thumb">
+										<img src="{{ vich_uploader_asset(picture, 'imageFile') }}" alt="" class="cover-img">
+									</div>
+								</div>
+							{% endif %}
+						{% endfor %}
+
 					</div>
 					<div class="property-details-wrapper">
 						<div class="property-details-item">
@@ -52,7 +49,9 @@
 											</span>
 											<div class="amenities-content__inner">
 												<span class="amenities-content__text">Room</span>
-												<h6 class="amenities-content__title mb-0 font-16">4 Room</h6>
+												<h6 class="amenities-content__title mb-0 font-16">
+													{{ property.getPropNbRooms }}
+													Rooms</h6>
 											</div>
 										</div>
 									</div>
@@ -63,7 +62,8 @@
 											</span>
 											<div class="amenities-content__inner">
 												<span class="amenities-content__text">Bed</span>
-												<h6 class="amenities-content__title mb-0 font-16">3 Beds</h6>
+												<h6 class="amenities-content__title mb-0 font-16">{{ property.getPropNbBeds }}
+													Beds</h6>
 											</div>
 										</div>
 									</div>
@@ -74,7 +74,8 @@
 											</span>
 											<div class="amenities-content__inner">
 												<span class="amenities-content__text">Bath</span>
-												<h6 class="amenities-content__title mb-0 font-16">2 Baths</h6>
+												<h6 class="amenities-content__title mb-0 font-16">{{ property.getPropNbBaths }}
+													Baths</h6>
 											</div>
 										</div>
 									</div>
@@ -85,7 +86,8 @@
 											</span>
 											<div class="amenities-content__inner">
 												<span class="amenities-content__text">Space</span>
-												<h6 class="amenities-content__title mb-0 font-16">3 Space</h6>
+												<h6 class="amenities-content__title mb-0 font-16">{{ property.getPropNbSpaces }}
+													Spaces</h6>
 											</div>
 										</div>
 									</div>
@@ -96,7 +98,8 @@
 											</span>
 											<div class="amenities-content__inner">
 												<span class="amenities-content__text">Size</span>
-												<h6 class="amenities-content__title mb-0 font-16">1020 sqft</h6>
+												<h6 class="amenities-content__title mb-0 font-16">{{ property.getPropSqm }}
+													m²</h6>
 											</div>
 										</div>
 									</div>
@@ -107,7 +110,7 @@
 											</span>
 											<div class="amenities-content__inner">
 												<span class="amenities-content__text">Property Type</span>
-												<h6 class="amenities-content__title mb-0 font-16">Apartment</h6>
+												<h6 class="amenities-content__title mb-0 font-16">{{ property.getPropHousingType }}</h6>
 											</div>
 										</div>
 									</div>
@@ -120,46 +123,36 @@
 								<div class="row gy-2">
 									<div class="col-sm-6">
 										<ul class="check-list">
-											<li class="check-list__item d-flex align-items-center">
-												<span class="icon">
-													<i class="fas fa-check"></i>
-												</span>
-												<span class="text">Dream Property Solutions</span>
-											</li>
-											<li class="check-list__item d-flex align-items-center">
-												<span class="icon">
-													<i class="fas fa-check"></i>
-												</span>
-												<span class="text">Secure Property Partners</span>
-											</li>
-											<li class="check-list__item d-flex align-items-center">
-												<span class="icon">
-													<i class="fas fa-check"></i>
-												</span>
-												<span class="text">Doors to Your Future</span>
-											</li>
+
+											{# -------------- Colonne gauche des features ------------------- #}
+											{% for feature in property.propFeature %}
+												{% if loop.index is odd %}
+													<li class="check-list__item d-flex align-items-center">
+														<span class="icon">
+															<i class="fas fa-check"></i>
+														</span>
+														<span class="text">{{ feature }}</span>
+													</li>
+												{% endif %}
+											{% endfor %}
+											
 										</ul>
 									</div>
 									<div class="col-sm-6">
 										<ul class="check-list">
-											<li class="check-list__item d-flex align-items-center">
-												<span class="icon">
-													<i class="fas fa-check"></i>
-												</span>
-												<span class="text">Prestige Property Management</span>
-											</li>
-											<li class="check-list__item d-flex align-items-center">
-												<span class="icon">
-													<i class="fas fa-check"></i>
-												</span>
-												<span class="text">Global Real Estate Investments</span>
-											</li>
-											<li class="check-list__item d-flex align-items-center">
-												<span class="icon">
-													<i class="fas fa-check"></i>
-												</span>
-												<span class="text">You Home with Experience</span>
-											</li>
+
+											{# -------------- Colonne droite des features ------------------- #}
+											{% for feature in property.propFeature %}
+												{% if loop.index is even %}
+													<li class="check-list__item d-flex align-items-center">
+														<span class="icon">
+															<i class="fas fa-check"></i>
+														</span>
+														<span class="text">{{ feature }}</span>
+													</li>
+												{% endif %}
+											{% endfor %}
+
 										</ul>
 									</div>
 								</div>
