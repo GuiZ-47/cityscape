@@ -33,7 +33,7 @@ class PropertyFixtures extends Fixture implements DependentFixtureInterface
             return $data;
         }
 
-        for ($ii = 1; $ii <50; $ii++) {
+        for ($ii = 1; $ii <100; $ii++) {
 
             $property = new Property();
             $property->setPropTitle($faker->word());
@@ -54,18 +54,19 @@ class PropertyFixtures extends Fixture implements DependentFixtureInterface
             $property->setPropLongitude($faker->longitude);
 
             $featArray =[];
-            for ($i = 1; $i < rand(1, 6); $i++) {
+            for ($i = 1; $i < rand(1, 8); $i++) {
                 $featArray[] = $faker->sentence;
             }           
             $property->setPropFeature($featArray);
             
             // Récupération des références pour les liaisons
-            $property->setCategory($this->getReference('category_' . rand(1, 5)));
+            // Le premier rand() est à 1,2 et pas 1,3, on n'associe pas les catégories de gestion aux propriétés, c'est plus simple car ils n'y a que 2 sous-catégories dans la gestion au lieu de 6 pour la location/vente
+            $property->setCategory($this->getReference('category_' . rand(1, 2). rand(1, 6) ));
             $property->setAgentImmobilier($this->getReference('agent'));
 
             $manager->persist($property);
 
-            for ($i = 0; $i < rand(1, 2); $i++) {
+            for ($i = 0; $i < rand(1, 3); $i++) {
 
                 // Récupérer une image sur internet et la sauvegarder dans un dossier
 

@@ -28,8 +28,6 @@ class PropertyRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('p')
         ->join('p.Category','c')
-        ->andWhere('c.slug = :slug')
-        ->setParameter('slug', $subMenu)
         ->andWhere('c.id = :id')
         ->setParameter('id', $id)
         ->orderBy('p.prop_price')

@@ -29,7 +29,7 @@ class UserFixtures extends Fixture
         $user->setRoles(['ROLE_ADMIN']);
         $user->setFirstName('admin');
         $user->setLastName('admin');
-        // $user->setIsVerified($faker->numberBetween(0, 1));
+        $user->setIsVerified(1);
         $manager->persist($user);
 
         // je vais créer un ROLE_AGENT_IMMOBILIER

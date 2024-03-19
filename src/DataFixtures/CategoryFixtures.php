@@ -78,7 +78,7 @@ class CategoryFixtures extends Fixture
 
         // }
 
-        // Version de Guillaume : categories pour une agence immobilière
+        // Version de Guillaume : categories de propriétés pour une agence immobilière
         $category = [
             1 => [
                 'name' => 'Vente',
@@ -186,8 +186,7 @@ class CategoryFixtures extends Fixture
                     $parent->setSlug($v['slug']);
                     $parent->setParent($category);
                     $manager->persist($parent);
-                    $this->setReference('category_' . $k, $parent);
-
+                    $this->setReference('category_'.$key.$k, $parent);
                 }
             }
         }

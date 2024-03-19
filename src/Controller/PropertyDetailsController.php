@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class PropertyDetailsController extends AbstractController
 {
-    #[Route('property/{propSlug}', name: 'app_property_details')]
+    #[Route('/property/details/{propSlug}', name: 'app_property_details', priority: 1)]
     public function index(Property $property): Response
     {
 
