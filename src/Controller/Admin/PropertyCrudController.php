@@ -48,6 +48,11 @@ class PropertyCrudController extends AbstractCrudController
             TextField::new('propTitle', "Nom"),
             TextField::new('propSlug', "Slug"),
             TextField::new('prop_housing_type', "Type"),
+            TextField::new('propDescription', "Description"),
+
+            AssociationField::new("AgentImmobilier","Agent Immobilier"),
+            AssociationField::new("Category","Catégorie"),
+
             IntegerField::new('prop_nb_rooms', "Chambres"),
             IntegerField::new('prop_sqm', "Mètres carrés"),
             MoneyField::new('prop_price',"Prix")

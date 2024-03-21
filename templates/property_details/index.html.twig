@@ -39,7 +39,7 @@
 					</div>
 					<div class="property-details-wrapper">
 						<div class="property-details-item">
-							<h6 class="property-details-item__title">Preview</h6>
+							<h6 class="property-details-item__title">Preview {{ property.propTitle }} </h6>
 							<div class="property-details-item__content">
 								<div class="row gy-4 gy-lg-5">
 									<div class="col-sm-4 col-6">
@@ -189,39 +189,20 @@
 					<div class="common-sidebar-wrapper">
 						<div class="common-sidebar">
 							<h6 class="common-sidebar__title">
-								Category
+								{{ property.Category.parent.name }}
 							</h6>
 							<ul class="category-list">
+								{% for category in property.Category.parent.categories %}
 								<li class="category-list__item">
-									<a href="blog-classic.html" class="category-list__link flx-between">
-										<span class="text">Prime Investments</span>
-										<span class="number">(1)</span>
-									</a>
-								</li>
-								<li class="category-list__item">
-									<a href="blog-classic.html" class="category-list__link flx-between">
-										<span class="text">ProHome Finders</span>
+									<a href="{{ path('app_property', {'menu': category.parent.slug, 'subMenu': category.slug, 'id': category.id }) }}" class="category-list__link flx-between">
+										<span class="text">{{ category.name }}</span>
 										<span class="number">
-											(8)
+											{# Faire des DQL pour comptabiliser et afficher ici le nombre total de propriétés dispos pour chaque sous catégories ? #}
 										</span>
 									</a>
 								</li>
-								<li class="category-list__item">
-									<a href="blog-classic.html" class="category-list__link flx-between">
-										<span class="text">SmartHouse Agency</span>
-										<span class="number">
-											(3)
-										</span>
-									</a>
-								</li>
-								<li class="category-list__item">
-									<a href="blog-classic.html" class="category-list__link flx-between">
-										<span class="text">Secure Property Partners</span>
-										<span class="number">
-											(5)
-										</span>
-									</a>
-								</li>
+								{% endfor %}
+
 							</ul>
 						</div>
 						<div class="common-sidebar">
@@ -364,7 +345,8 @@
 
             window.onload = function(){
 		        // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
-		        initMap(); 
+		        initMap();
+				// Positionne un marqueur aux coordonnées de la propriété
                 var marker = L.marker([lat, lon]).addTo(macarte);
             };
 </script>

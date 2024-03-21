@@ -18,7 +18,11 @@ use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 class Picture implements Stringable
 {   
     use TimestampTraits;
-
+    
+    public function __toString(): string  {
+        return (string) $this->imageName;
+    }
+    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -99,7 +103,4 @@ class Picture implements Stringable
         return $this;
     }
 
-    public function __toString(): string  {
-        return (string) $this->imageName;
-    }
 }

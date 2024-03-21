@@ -51,11 +51,12 @@
 	<body>
 		<!--==================== Preloader Start ====================-->
 		{# <div class="preloader">
-				<div class="loader"></div>
-			</div> #}
+										<div class="loader"></div>
+									</div> #}
 		<!--==================== Preloader End ====================-->
 
-		<!--==================== Overlay Start ====================--><div class="overlay"> </div>
+		<!--==================== Overlay Start ====================-->
+		<div class="overlay"> </div>
 		<!--==================== Overlay End ====================-->
 
 		<!--==================== Sidebar Overlay End ====================-->
@@ -78,7 +79,9 @@
 			{# Ce n'est plus necessaire puisque qu'on va utiliser à la place la fonction menu() de Menu Controller #}
 			{# {% include '_partials/_header_top.html.twig' %} #}
 
-			{{ render (controller ('App\\Controller\\Menu\\MenuController::menu')) }}{% block body %}
+			{{ render (controller ('App\\Controller\\Menu\\MenuController::menu')) }}
+			
+			{% block body %}
 			{% endblock %}
 
 		{% include '_partials/_footer.html.twig' %}

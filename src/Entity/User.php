@@ -2,14 +2,15 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\TimestampTraits;
+use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use App\Repository\UserRepository;
-use App\Entity\Traits\TimestampTraits;
 use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 use phpDocumentor\Reflection\Types\Nullable;
 use Scheb\TwoFactorBundle\Model\Email\TwoFactorInterface;
+use Stringable;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -17,9 +18,24 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 #[HasLifecycleCallbacks]
-class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFactorInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFactorInterface, Stringable
 {
     use TimestampTraits;
+
+    public function __toString(): string
+    {
+
+        if (in_array("ROLE_ADMIN", $this->roles)) {
+            return (string) $this->userName . "-Admin";
+        } 
+        elseif (in_array("ROLE_AGENT_IMMOBILIER", $this->roles)) {
+            return (string) $this->userName . "-Agent";
+        } 
+        else {
+            return (string) $this->userName . "-User";
+        }
+        ;
+    }
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -32,7 +48,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     // private ?string $authCode;
 
     // Variante mais avec syntax différente ?
-    #[ORM\Column(type:'string', nullable:true)]
+    #[ORM\Column(type: 'string', nullable: true)]
     private ?string $authCode;
 
     #[ORM\Column(length: 180, unique: true)]
@@ -65,7 +81,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     #[ORM\OneToMany(targetEntity: Property::class, mappedBy: 'AgentImmobilier')]
     private Collection $properties;
 
-    
+
 
     public function __construct()
     {

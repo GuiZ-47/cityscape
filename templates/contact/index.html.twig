@@ -13,6 +13,8 @@
 {% block body %}
     {% include '_partials/_breadcrumb.html.twig' %}
 
+	{{ render (controller ('App\\Controller\\ContactUsFormController::contact')) }}
+
     <!-- ============================= Contact Top Section Start ======================= -->
 		<section class="contact-top padding-y-120">
 			<div class="container container-two">
@@ -69,6 +71,8 @@
 				</div>
 			</div>
 		</section>
+
+
 	<!-- ============================= Contact Top Section End ======================= -->
 
 

@@ -9,12 +9,23 @@ use Doctrine\ORM\Mapping as ORM;
 
 use App\Entity\Traits\TimestampTraits;
 use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
+use Stringable;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 #[ORM\HasLifecycleCallbacks]
-class Category
-{   
+class Category implements Stringable
+{
     use TimestampTraits;
+
+    public function __toString(): string
+    {
+        if ($this->parent == null) {
+            return (string) $this->name;
+        } 
+        else {
+            return (string) $this->parent->name . ' - ' . $this->name;
+        }
+    }
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
