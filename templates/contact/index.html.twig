@@ -13,8 +13,6 @@
 {% block body %}
     {% include '_partials/_breadcrumb.html.twig' %}
 
-	{{ render (controller ('App\\Controller\\ContactUsFormController::contact')) }}
-
     <!-- ============================= Contact Top Section Start ======================= -->
 		<section class="contact-top padding-y-120">
 			<div class="container container-two">
@@ -91,28 +89,34 @@
 						</h2>
 						<p class="section-heading__desc">For your car we will do everything  advice, repairs and maintenance. We are the some preferred choice by many car owners because</p>
 					</div>
-					<form action="#" class="contact-form__form">
+
+					 
+					{# {{ dump(form) }} #}
+					
+					{# On ouvre le formulaire en oubliant pas d'y intégrer la classe qui était présente dans la balise <form> du template de base (dans la balise twig on l'integre sous forme d'un JSON : {'attr' : {'class' : 'contact' } } ) #}
+					 {{ form_start(form,  {'attr' : {'class' : 'contact-form__form' } } ) }}
 						<div class="row gy-4">
 							<div class="col-sm-6 col-xs-6">
-								<input type="text" class="common-input" placeholder="Your Name">
+								{{ form_row(form.contName) }}
 							</div>
 							<div class="col-sm-6 col-xs-6">
-								<input type="email" class="common-input" placeholder="Your E-mail">
+								{{ form_row(form.contEmail) }}
 							</div>
 							<div class="col-sm-6 col-xs-6">
-								<input type="tel" class="common-input" placeholder="Phone Number">
+								{{ form_row(form.contPhoneNumber) }}
 							</div>
 							<div class="col-sm-6 col-xs-6">
-								<input type="text" class="common-input" placeholder="Subject">
+								{{ form_row(form.contSubject) }}
 							</div>
 							<div class="col-12">
-								<textarea class="common-input" placeholder="Your Message"></textarea>
+								{{ form_row(form.contMessage) }}
 							</div>
 							<div class="col-12">
 								<button type="submit" class="btn btn-main w-100">Submit Now</button>
 							</div>
 						</div>
-					</form>
+					{{ form_end(form) }}
+					
 				</div>
 			</div>
 		</section>

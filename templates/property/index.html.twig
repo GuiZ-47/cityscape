@@ -157,6 +157,13 @@
 										<i class="fas fa-arrow-right"></i>
 									</span>
 								</a>
+								{% if property.Category.parent.name == 'Location' %}
+								<a href="{{ path('app_panier',{'id':property.id}) }}" class="simple-btn text-gradient fw-semibold font-14">Réservation
+									<span class="icon-right">
+										<i class="fas fa-arrow-right"></i>
+									</span>
+								</a>
+								{% endif %}
 							</div>
 						</div>
 					</div>
