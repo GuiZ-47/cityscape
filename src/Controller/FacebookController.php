@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -49,21 +50,21 @@ class FacebookController extends AbstractController
         // ** if you want to *authenticate* the user, then
         // leave this method blank and create a Guard authenticator
 
-        $client = $clientRegistry->getClient('facebook');
+    //     $client = $clientRegistry->getClient('facebook');
 
-        try {
-            // the exact class depends on which provider you're using
-            /** @var \League\OAuth2\Client\Provider\FacebookUser $user */
-            $user = $client->fetchUser();
+    //     try {
+    //         // the exact class depends on which provider you're using
+    //         /** @var \League\OAuth2\Client\Provider\FacebookUser $user */
+    //         $user = $client->fetchUser();
 
-            // do something with all this new power!
-            // e.g. $name = $user->getFirstName();
-            var_dump($user); die;
-            // ...
-        } catch (IdentityProviderException $e) {
-            // something went wrong!
-            // probably you should return the reason to the user
-            var_dump($e->getMessage()); die;
-        }
+    //         // do something with all this new power!
+    //         // e.g. $name = $user->getFirstName();
+    //         var_dump($user); die;
+    //         // ...
+    //     } catch (IdentityProviderException $e) {
+    //         // something went wrong!
+    //         // probably you should return the reason to the user
+    //         var_dump($e->getMessage()); die;
+    //     }
     }
 }
