@@ -41,7 +41,7 @@ class PropertyFixtures extends Fixture implements DependentFixtureInterface
             $property->setPropDescription($faker->text(200));
             $property->setPropHousingType($faker->randomElement(['Houses', 'Apartments', 'Office', 'Villa']));
             $property->setPropSqm($faker->numberBetween(0, 1000));
-            $property->setPropPrice($faker->numberBetween(0, 100000));
+            $property->setPropPrice($faker->numberBetween(0, 1000));
             
             $property->setPropNbRooms($faker->numberBetween(0, 30));
             $property->setPropNbBeds($faker->numberBetween(1, 10));
@@ -71,11 +71,15 @@ class PropertyFixtures extends Fixture implements DependentFixtureInterface
                 // Récupérer une image sur internet et la sauvegarder dans un dossier
 
                 $url = 'https://picsum.photos/1290/584';
-                $imageFile = curl_get_contents($url);
                 $imageName ="property". rand(1, 9999) . '.jpg';
-                $imagePath = 'C:\laragon\www\cityscape\public\assets\images\property/' . $imageName;
 
-                file_put_contents($imagePath, $imageFile );
+                while (!file_exists('C:\laragon\www\cityscape\public\assets\images\property/' . $imageName)) {
+                    $imageFile = curl_get_contents($url);
+                    $imagePath = 'C:\laragon\www\cityscape\public\assets\images\property/' . $imageName;
+    
+                    file_put_contents($imagePath, $imageFile );
+                }
+
 
                 $pict = new Picture();
                 $pict->setImageName($imageName);

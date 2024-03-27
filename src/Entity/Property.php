@@ -77,10 +77,14 @@ class Property
     #[ORM\Column(length: 255)]
     private ?string $propSlug = null;
 
+    #[ORM\ManyToMany(targetEntity: Cart::class, mappedBy: 'Property')]
+    private Collection $carts;
+
     public function __construct()
     {
         $this->Picture = new ArrayCollection();
         $this->amenities = new ArrayCollection();
+        $this->carts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -336,6 +340,33 @@ class Property
     public function setPropSlug(string $propSlug): static
     {
         $this->propSlug = $propSlug;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Cart>
+     */
+    public function getCarts(): Collection
+    {
+        return $this->carts;
+    }
+
+    public function addCart(Cart $cart): static
+    {
+        if (!$this->carts->contains($cart)) {
+            $this->carts->add($cart);
+            $cart->addProperty($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCart(Cart $cart): static
+    {
+        if ($this->carts->removeElement($cart)) {
+            $cart->removeProperty($this);
+        }
 
         return $this;
     }
