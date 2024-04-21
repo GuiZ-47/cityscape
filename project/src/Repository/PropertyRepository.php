@@ -117,6 +117,7 @@ class PropertyRepository extends ServiceEntityRepository
                 'p.prop_nb_spaces AS propSpaces',
                 'p.prop_sqm AS propArea',
                 'p.prop_housing_type AS propType',
+                'p.propFeature AS propFeatures',
                 
                 'p.prop_price AS propPrice',
                 'p.propLatitude',
