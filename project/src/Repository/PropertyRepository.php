@@ -38,13 +38,16 @@ class PropertyRepository extends ServiceEntityRepository
     }
 
 // ---------------------------------- requêtes pour l'API React Native -----------------------------------------
+
+    // Récupération de tout les biens immobiliers, une seule image par propriété
     public function findAllPropertiesReact(): array
     {
         return $this->createQueryBuilder('p')
             // 'p' fais référence à l'entité 'Property'
             // la sous-categorie 'sc' et la categorie principale 'c' et les images 'pic' sont issues de jointures avec des entités en relation avec 'Property'
 
-            // Les Alias dans SELECT servent à harmoniser les clés dans le JSON, pour que tout les participants au projet puissent s'échanger du code, malgré des noms de propriétés différentes dans les entités sur symfony
+            // Les Alias dans le SELECT sont les mêmes dans les API de tout les participants au projet, ils servent à harmoniser les clés dans le JSON qui est renvoyé.
+            // Pour que tout les participants au projet puissent s'échanger du code sans avoir à l'adapter, malgré des noms de propriétés différentes dans les entités de symfony.
             ->select(
                 'p.id AS propId',
                 'p.propTitle',
@@ -101,13 +104,15 @@ class PropertyRepository extends ServiceEntityRepository
         ;
     }
 
+    // Récupération d'un seul bien immobilier sélectionné avec l'Id fourni par la requête. Dans la réponse, un objet est généré par image. 
     public function findPropertyByIdReact($Id): array
     {
         return $this->createQueryBuilder('p')
             // 'p' fais référence à l'entité 'Property'
             // la sous-categorie 'sc' et la categorie principale 'c' et les images 'pic' sont issues de jointures avec des entités en relation avec 'Property'
 
-            // Les Alias dans SELECT servent à harmoniser les clés dans le JSON, pour que tout les participants au projet puissent s'échanger du code, malgré des noms de propriétés différentes dans les entités sur symfony
+            // Les Alias dans le SELECT sont les mêmes dans les API de tout les participants au projet, ils servent à harmoniser les clés dans le JSON qui est renvoyé.
+            // Pour que tout les participants au projet puissent s'échanger du code sans avoir à l'adapter, malgré des noms de propriétés différentes dans les entités de symfony.
             ->select(
                 'p.id AS propId',
                 'p.propTitle',
