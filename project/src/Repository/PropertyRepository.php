@@ -37,7 +37,7 @@ class PropertyRepository extends ServiceEntityRepository
         ;
     }
 
-// ---------------------------------- requêtes pour l'API React Native -----------------------------------------
+    // ---------------------------------- requêtes pour l'API React Native -----------------------------------------
 
     // Récupération de tout les biens immobiliers, une seule image par propriété
     public function findAllPropertiesReact(): array
@@ -56,13 +56,13 @@ class PropertyRepository extends ServiceEntityRepository
                 'p.prop_nb_baths AS propBaths',
                 'p.propLatitude',
                 'p.propLongitude',
-                
+
                 'c.id AS catMainCategoryId',
                 'c.name AS catMainCategoryName',
-                
+
                 'sc.id AS catSubCategoryId',
                 'sc.name AS catSubCategoryName',
-                
+
                 'pic.id AS picId',
                 'pic.imageName AS picName',
 
@@ -75,7 +75,7 @@ class PropertyRepository extends ServiceEntityRepository
 
             // 'On utilise la propriété 'parent' de 'sc' pour faire la jointure avec la table 'Category', et y récupérer la catégorie principale 'c' qui est liée à la sous categorie 'sc'
             ->join('sc.parent', 'c')
-           
+
             // 'On utilise la propriété 'Picture' de 'p' pour faire la jointure avec la table 'Picture', que l'on nomme 'pic'
             ->innerJoin(
                 'p.Picture',
@@ -91,11 +91,11 @@ class PropertyRepository extends ServiceEntityRepository
             // Solution caca !!! ce bricolage renvoie dans les objets la dernière image de chaque propriété, mais le résultat retourné n'est plus d'un tableau d'objet mais un objet d'objets avec des clés numérotées!!!!!!!!
             // On utilise un indexation par p.id lors de la jointure, ce qui écrase les objets qui ont des noms d'index similaire, pour ne garder que le dernier objet de chaque propriété
             // ->join('p.Picture', 'pic', '', '', 'p.id' )
-            
+
             // Pour alléger les requêtes lors de tests,  on peut ne sélectionner qu'une seule propriété
             // ->andWhere('p.id = :id')
             // ->setParameter('id', 1)
-            
+
             // Tri des objets
             ->orderBy('p.id')
 
@@ -123,17 +123,17 @@ class PropertyRepository extends ServiceEntityRepository
                 'p.prop_sqm AS propArea',
                 'p.prop_housing_type AS propType',
                 'p.propFeature AS propFeatures',
-                
+
                 'p.prop_price AS propPrice',
                 'p.propLatitude',
                 'p.propLongitude',
-                
+
                 'c.id AS catMainCategoryId',
                 'c.name AS catMainCategoryName',
-                
+
                 'sc.id AS catSubCategoryId',
                 'sc.name AS catSubCategoryName',
-                
+
                 'pic.id AS picId',
                 'pic.imageName AS picName',
 
@@ -146,7 +146,7 @@ class PropertyRepository extends ServiceEntityRepository
 
             // 'On utilise la propriété 'parent' de 'sc' pour faire la jointure avec la table 'Category', et y récupérer la catégorie principale 'c' qui est liée à la sous categorie 'sc'
             ->join('sc.parent', 'c')
-           
+
             // 'On utilise la propriété 'Picture' de 'p' pour faire la jointure avec la table 'Picture', que l'on nomme 'pic'
             ->innerJoin(
                 'p.Picture',
@@ -158,20 +158,63 @@ class PropertyRepository extends ServiceEntityRepository
                 // 'WITH',
                 // 'pic.id = (SELECT MIN(pic2.id) FROM ' . Picture::class . ' pic2 WHERE pic2.property = p)'
             )
-            
+
             ->andWhere('p.id = :id')
             ->setParameter('id', $Id)
-            
+
             ->getQuery()
             ->getResult()
         ;
     }
 
+    public function findPropertiesByCategoryIds($categoryIds): array
+{
+    return $this->createQueryBuilder('p')
+        ->select(
+            'p.id AS propId',
+            'p.propTitle',
+            'p.prop_price AS propPrice',
+            'p.prop_nb_beds AS propBeds',
+            'p.prop_nb_baths AS propBaths',
+            'p.propLatitude',
+            'p.propLongitude',
+            'c.id AS catMainCategoryId',
+            'c.name AS catMainCategoryName',
+            'sc.id AS catSubCategoryId',
+            'sc.name AS catSubCategoryName',
+            'pic.id AS picId',
+            'pic.imageName AS picName'
+        )
+        ->join('p.Category', 'sc')
+        ->join('sc.parent', 'c')
+        ->innerJoin(
+            'p.Picture',
+            'pic',
+            'WITH',
+            'pic.id = (SELECT MIN(pic2.id) FROM ' . Picture::class . ' pic2 WHERE pic2.property = p)'
+        )
+        // Sélection en fonction de catégories et sous-catégories particulières
+        ->where('sc.id IN (:categoryIds) OR c.id IN (:categoryIds)')
+        ->setParameter('categoryIds', $categoryIds)
+        ->orderBy('p.id')
+        ->getQuery()
+        ->getResult();
+}
 
 
+    // // Api d'Iris pour sélectionner des propriétés en fonction de la pagination
+    // public function findAllPropertiesReact($page, $limit): array
+    // {
+    //     return $this->createQueryBuilder('p')
+    //         ->select('p.id', 'p.propHousingType', 'p.propNbRooms', 'p.propSQM', 'p.propPrice', 'p.propNbBeds', 'p.propNbBaths', 'p.propNbSpaces')
+    //         ->setFirstResult(($page - 1) * $limit)
+    //         ->setMaxResults($limit)
+    //         ->getQuery()
+    //         ->getResult();
+    // }
 
 
-    //    /**
+//    /**
 //     * @return Property[] Returns an array of Property objects
 //     */
 //    public function findByExampleField($value): array
