@@ -54,7 +54,7 @@ class PropertyController extends AbstractController
         ]);
     }
 
-    // --------------------------API (il faudrait les déplacer dans un controller à part )------------------------------------
+    // --------------------------API pour React Native (il faudrait les déplacer dans un controller à part )------------------------------------
    
     // Sélectionner toute les propriétés avec une seule image pour chacune
     #[Route('/api/react/properties', name: 'api_all_properties')]
@@ -67,6 +67,7 @@ class PropertyController extends AbstractController
         // return $properties;
     }
 
+    // Sélectionner la propriété la plus réçente (attention ça peut renvoyer plusieurs propriétés crées simultanément pas des fixtures)
     #[Route('/api/react/properties/new', name: 'api_new_properties')]
     public function findNewestProperty(PropertyRepository $property): JsonResponse
     {   
@@ -85,6 +86,7 @@ class PropertyController extends AbstractController
         
         return $this->json($queryResult);
 
+        // Pour tester que l'API récupère correctement l'Id
         // return new JsonResponse("Réponse de l'API : Vous avez demandé la propriété avec l'ID : $Id");
     }
 
@@ -92,14 +94,14 @@ class PropertyController extends AbstractController
     #[Route('/api/react/categories', name: 'api_all_categories')]
     public function allCategories(CategoryRepository $category): JsonResponse
     {   
-        // Toute les ($property);
+
        $categories = $category->findAllCategoriesReact();
 
         return $this->json($categories);
         // return $properties;
     }
 
-    // Sélectionner des propriétés filtrées en fonction d'Ids de catégories fourni par la requête, avec une seule image pour chacune des propriété
+    // Sélectionner des propriétés filtrées en fonction d'Ids de catégories fourni par la requête. Avec une seule image pour chacune des propriété
     #[Route('/api/react/properties/filtered', name: 'api_properties__filtered_by_categories', methods: ['GET'])]
     public function propertiesByCategoryIds(PropertyRepository $property, Request $request): JsonResponse
     {   
@@ -121,6 +123,8 @@ class PropertyController extends AbstractController
         // return $this->json($categoryIds);
     }
 
+    // Récupérer les infos de l'utilisateur connecté sur l'app, il est identifié grâce au JWT fourni lors du login via "/api/login_check"
+    // La route est sécurisé, un JWT valide est nécessaire dans la requête entrante pour accéder à l'API
     #[Route('api/react/user', name: 'app_user')]
     public function userInfos(TokenStorageInterface $tokenStorage): JsonResponse
     {
