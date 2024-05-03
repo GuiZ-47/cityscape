@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class PropertyController extends AbstractController
 {
@@ -66,6 +67,15 @@ class PropertyController extends AbstractController
         // return $properties;
     }
 
+    #[Route('/api/react/properties/new', name: 'api_new_properties')]
+    public function findNewestProperty(PropertyRepository $property): JsonResponse
+    {   
+        // Propriété la plus réçente
+       $queryResult = $property->findNewestProperty();
+
+        return $this->json($queryResult);
+    }
+
     // Sélectionner une propriété avec toutes ses images, en fonction d'un Id fourni par la requête
     #[Route('/api/react/property/{Id}', name: 'api_property')]
     public function oneProperty($Id, PropertyRepository $property): JsonResponse
@@ -110,6 +120,26 @@ class PropertyController extends AbstractController
         return $this->json($queryResult);
         // return $this->json($categoryIds);
     }
+
+    #[Route('api/react/user', name: 'app_user')]
+    public function userInfos(TokenStorageInterface $tokenStorage): JsonResponse
+    {
+        $token = $tokenStorage->getToken();
+
+        $user = $token->getUser();
+
+        return $this->json([
+            'id' => $user->getId(),
+            'email' => $user->getEmail(),
+            'roles' => $user->getRoles(),
+            'isVerified' => $user->isVerified(),
+            'firstName' => $user->getFirstName(),
+            'lastName' => $user->getLastName(),
+            'userName' => $user->getUserName(),
+            'createdAt' => $user->getCreatedAt(),
+        ]);
+    }
+
 
     // // Controller d'Iris pour sélectionner des propriétés en fonction de la pagination
     // #[Route('/api/react', name: 'properties', methods: ['GET'])]

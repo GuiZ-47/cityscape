@@ -201,6 +201,38 @@ class PropertyRepository extends ServiceEntityRepository
         ->getResult();
 }
 
+// Propriété la plus réçente
+public function findNewestProperty(): array
+{
+    return $this->createQueryBuilder('p')
+        ->select(
+            'p.id AS propId',
+            'p.propTitle',
+            'p.prop_nb_rooms AS propRooms',
+            'p.prop_nb_beds AS propBeds',
+            'p.prop_nb_baths AS propBaths',
+            'p.prop_nb_spaces AS propSpaces',
+            'p.prop_sqm AS propArea',
+            'p.prop_housing_type AS propType',
+            'p.propFeature AS propFeatures',
+            'p.prop_price AS propPrice',
+            'p.propLatitude',
+            'p.propLongitude',
+            'c.id AS catMainCategoryId',
+            'c.name AS catMainCategoryName',
+            'sc.id AS catSubCategoryId',
+            'sc.name AS catSubCategoryName',
+            'pic.id AS picId',
+            'pic.imageName AS picName'
+        )
+        ->join('p.Category', 'sc')
+        ->join('sc.parent', 'c')
+        ->innerJoin('p.Picture', 'pic')
+        ->andWhere('p.createdAt = (SELECT MAX(p2.createdAt) FROM App\Entity\Property p2)')
+        ->getQuery()
+        ->getResult();
+}
+
 
     // // Api d'Iris pour sélectionner des propriétés en fonction de la pagination
     // public function findAllPropertiesReact($page, $limit): array
