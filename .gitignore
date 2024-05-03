@@ -1,1 +1,4 @@
 project/config/packages/security copy.yaml
+project/config/jwt/private.pem
+project/config/jwt/public.pem
+testsPerso/copiedesecurity.yaml
